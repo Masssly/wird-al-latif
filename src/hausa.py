@@ -1,0 +1,50 @@
+# -*- coding: utf-8 -*-
+"""Hausa translation of the meanings of the Qur'an by Abubakar Mahmoud Gumi,
+as printed by the King Fahd Glorious Qur'an Printing Complex.
+Transcribed by eye from the printed pages (scan supplied by the compiler).
+Spelling as printed: tilde marks long vowels (ã ẽ ĩ õ ũ); hooked letters ɓ ɗ ƙ.
+Footnote markers are omitted; words split across lines in print are rejoined.
+Printed page numbers are noted for proofreading."""
+
+HAU_BISM = "Da sũnan Allah, Mai rahama, Mai jin ƙai."
+
+HAU = {
+    # 112 Sũratul Ikhlãṣ — p. 959
+    (112, 1): "Ka ce, “Shi ne Allah Makaɗaici,",
+    (112, 2): "“Allah Wanda ake nufin Sa da bukata.",
+    (112, 3): "“Bai haifa ba, kuma ba a haife Shi ba.",
+    (112, 4): "“Kuma babu ɗaya da ya kasance tamka a gare Shi.”",
+    # 113 Sũratul Falaƙ — pp. 959–960
+    (113, 1): "Ka ce “Ina neman tsari ga Ubangijin safiya",
+    (113, 2): "“Daga sharrin abin da Ya halitta.",
+    (113, 3): "“Da sharrin dare, idan ya yi duhu.",
+    (113, 4): "“Da sharrin mãtã mãsu tõfi a cikin ƙulle-ƙulle.",
+    (113, 5): "“Da sharrin mai hãsada idan ya yi hãsada”.",
+    # 114 Sũratun Nãs — p. 960
+    (114, 1): "Ka ce “Ina neman tsari ga Ubangijin mutane.",
+    (114, 2): "“Mamallakin mutane.",
+    (114, 3): "“Abin bautãwar mutane.",
+    (114, 4): "“Daga sharrin mai sanya wasuwãsi, mai ɓoyewa.",
+    (114, 5): "“Wanda ke sanya wasuwãsi a cikin ƙirãzan mutane.",
+    (114, 6): "“Daga aljannu da mutane.”",
+    # 23 Sũratul Mu’minũn — pp. 525, 527
+    (23, 97): "Ka ce, “Yã Ubangijĩna, inã nẽman tsari da Kai daga fizge-fizgen shaiɗãnu.",
+    (23, 98): "“Kuma inã nẽman tsari da Kai, ya Ubangijĩna! Dõmin kada su halarto ni,”",
+    (23, 115): "“Shin, to, kun yi zaton cẽwa Mun halitta ku ne da wãsa, kuma lalle ku, zuwa gare Mu, bã zã ku kõmo ba?”",
+    (23, 116): "Allah, Mamallaki, Gaskiya, Yã ɗaukaka. Bãbu abin bautãwa, fãce Shi. Shĩ ne Ubangijin Al’arshi, mai daraja.",
+    (23, 117): "Kuma wanda ya kira, tãre da Allah, waɗansu abũbuwan bautãwa na dabam, bã yanã da wani dalĩli game da shĩ (kiran) ba, to, hisãbinsa yanã wurin Ubangijinsa kawai. Lalle ne, kãfirai bã su cin nasara.",
+    (23, 118): "Kuma ka ce, “Yã Ubangijina! Ka yi gãfara, Ka yi rahama, kuma Kai ne Mafi alhẽrin mãsu rahama.”",
+    # 30 Sũratur Rũm — p. 615
+    (30, 17): "Sabõda haka tsarkakẽwa ta tabbata ga Allah a lõkacin da kuke shiga maraice, da lõkacin da kuke shiga sãfiya.",
+    (30, 18): "Kuma Shĩ ne da gõdiya, a cikin sammai da ƙasã, kuma da lõkacin yamma da lõkacin zawãli.",
+    (30, 19): "Yanã fitar da mai rai daga matacce, kuma Yanã fitar da matacce daga mai rai, kuma Yanã rãyar da ƙasa a bãyan mutuwarta. Kuma haka ake fitar da ku.",
+    # 59 Sũratul Ḥashr — pp. 843–844
+    (59, 21): "Dã Mun saukar da wannan Alƙur’ãni a kan dũtse, dã lalle kã ga dũtsen yanã mai tawãli’u, mai tsattsãgẽwa sabõda tsõron Allah, kuma waɗancan misãlai Munã bayyana su ne ga mutãne, da fatan za su yi tunãni.",
+    (59, 22): "(Wanda Ya saukar da Alƙur’ãni) Shi ne Allah, Wanda bãbu wani abin bautãwa fãce Shi, Masanin fake da bayyane, Shĩ ne Mai rahama, Mai jin ƙai.",
+    (59, 23): "Shĩ ne Allah, Wanda bãbu abin bautãwa fãce Shi, Mai mulki, Mai tsarki, Aminci, Mai amintarwa, Mai Tsarẽwa, Mabuwãyi, Mai tĩlastãwa, Mai kãmun kai. Tsarki ya tabbata a gare Shi daga abin da suke yi na shirki da Shi.",
+    (59, 24): "Shĩ ne Allah, Mai halitta, Mai ginãwa, Mai sũrantãwa. Yanã da sũnãye mãsu kyau, abin da ke a cikin sammai da ƙasa sunã tsarkake Shi, kuma Shĩ ne Mabuwãyi, Mai hikima.",
+    # 37 Sũratuṣ Ṣãffãt — p. 679
+    (37, 79): "Aminci ya tabbata ga Nũhu, a cikin halittu.",
+    (37, 80): "Lalle Mũ, kamar haka Muke sãka wa mãsu kyautatãwa.",
+    (37, 81): "Lalle shi, yanã daga bãyinMu mũminai.",
+}
