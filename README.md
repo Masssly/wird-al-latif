@@ -10,6 +10,8 @@ Dagbanli. Compiled by Mohammed Sadat Abdulai.
 multilingual website and per-language PDFs (see SPEC.md). The duʿā Arabic and
 the Hausa and Dagbanli texts are **not yet proofread**; see REVIEW.md.
 
+Hosted on GitHub; the website will be published with GitHub Pages, built by GitHub Actions.
+
 ## Build the PDF
 
 ```sh

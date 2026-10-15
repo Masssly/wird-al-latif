@@ -55,7 +55,9 @@ Design the data model now so it can be added later: an optional `audio` field pe
 5. Kids mode, then audio.
 
 ## Open questions (ask me, don't assume)
-- GitHub vs GitLab final choice (default GitHub).
 - Licence confirmation, and the repo/org name and domain.
 - Whether to keep the duʿā transliteration or rewrite it.
 - Whether to build a Commons-eligible edition (needs Pickthall + a free font, no KFGQPC/QuranEnc).
+
+## Decisions log
+- 2026-10-15 · Hosting: **GitHub** (repo Masssly/wird-al-latif, GitHub Pages via GitHub Actions). Output stays static so a move to GitLab Pages remains possible.
