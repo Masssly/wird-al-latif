@@ -1,0 +1,141 @@
+# Transliteration layer.
+#
+# Replaceable as a whole: the provenance of this transliteration is
+# unresolved (see THIRD_PARTY.md), so it is kept apart from the Arabic and
+# from the translations and can be swapped for a rewritten one without
+# touching anything else.
+
+meta:
+  scheme: "edition-1.0"   # ad-hoc scheme of the 1.0 PDF (macrons, ʿ ʾ, il-/ul- liaison)
+  status: draft
+  provenance: "Based on a circulating edition of the wird (Ashnataar Publications, 2012), revised for edition 1.0. Unresolved; see THIRD_PARTY.md."
+  licence: "unresolved (proposed CC BY-SA 4.0 once provenance is cleared)"
+  version: "1.0"
+
+basmala: "Bismillāh il-Raḥmān il-Raḥīm."
+
+# Qurʾānic passages, keyed by sura:āya.  23:97 covers only the part the wird reads.
+quran:
+  "112:1": "Qul Huwa Allāhu aḥad."
+  "112:2": "Allāhu al-Ṣamad."
+  "112:3": "Lam yalid wa lam yūlad."
+  "112:4": "Wa lam yakun lahu kufuwan aḥad."
+  "113:1": "Qul aʿūdhu bi rabb il-falaq."
+  "113:2": "Min sharri mā khalaq."
+  "113:3": "Wa min sharri ghāsiqin idhā waqab."
+  "113:4": "Wa min sharri il-naffāthāti fil-ʿuqad."
+  "113:5": "Wa min sharri ḥāsidin idhā ḥasad."
+  "114:1": "Qul aʿūdhu bi rabb il-nās."
+  "114:2": "Malik il-nās."
+  "114:3": "Ilāh il-nās."
+  "114:4": "Min sharri al-waswās al-khannās,"
+  "114:5": "alladhī yuwaswisu fī ṣudūr il-nās,"
+  "114:6": "min al-jinnati wa al-nās."
+  "23:97": "Rabbī aʿūdhu bika min hamazāt il-shayāṭīn,"
+  "23:98": "wa aʿūdhu bika Rabbī an yaḥḍurūn."
+  "23:115": "Afaḥasibtum annamā khalaqnākum ʿabathan wa annakum ilaynā lā turjaʿūn."
+  "23:116": "Fa taʿālā Allāh ul-Malik ul-Ḥaqq, lā ilāha illā Huwa Rabb ul-ʿArsh il-Karīm."
+  "23:117": "Wa man yadʿu maʿ Allāhi ilāhan ākhara lā burhāna lahu bihi, fa-innamā ḥisābuhu ʿinda Rabbih, innahu lā yufliḥ ul-kāfirūn."
+  "23:118": "Wa qul Rabb ighfir warḥam wa anta khayr ul-rāḥimīn."
+  "30:17": "Fa-subḥān Allāhi ḥīna tumsūna wa ḥīna tuṣbiḥūn."
+  "30:18": "Wa lahu al-ḥamdu fi al-samāwāti wa al-arḍi wa ʿashiyyan wa ḥīna tuẓhirūn."
+  "30:19": "Yukhrij ul-ḥayya min al-mayyiti wa yukhrij ul-mayyita min al-ḥayyi wa yuḥyī il-arḍa baʿda mawtihā, wa kadhālika tukhrajūn."
+  "59:21": "Law anzalnā hādhā al-Qurʾāna ʿalā jabalin laraʾaytahu khāshiʿan mutaṣaddiʿan min khashyat Illāh, wa tilk al-amthālu naḍribuhā li-l-nāsi laʿallahum yatafakkarūn."
+  "59:22": "Huwa Allāhu alladhī lā ilāha illā Huwa, ʿālim ul-ghaybi wa al-shahādati Huwa al-Raḥmān ul-Raḥīm."
+  "59:23": "Huwa Allāhu alladhī lā ilāha illā Huwa al-Malik ul-Quddūs ul-Salām ul-Muʾmin ul-Muhaymin ul-ʿAzīz ul-Jabbār ul-Mutakabbir, subḥān Allāhi ʿammā yushrikūn."
+  "59:24": "Huwa Allāh ul-Khāliq ul-Bāriʾ ul-Muṣawwir, lahu ul-asmāʾ ul-ḥusnā, yusabbiḥu lahu mā fī al-samāwāti wa al-arḍi wa Huwa al-ʿAzīz ul-Ḥakīm."
+  "37:79": "Salāmun ʿalā Nūḥin fi al-ʿālamīn."
+  "37:80": "Innā kadhālika najzi al-muḥsinīn."
+  "37:81": "Innahu min ʿibādina al-muʾminīn."
+
+items:
+  taawwudh: "Aʿūdhu billāhi al-Samīʿ al-ʿAlīm min al-shayṭān al-rajīm."
+  kalimat-tammat: "Aʿūdhu bikalimāt Illāhi al-tāmmāti min sharri mā khalaq."
+  bismillah-la-yadurr: "Bismillāh alladhī lā yaḍurru maʿ ismihi shayʾun fi al-arḍi wa lā fī al-samāʾi wa Huwa al-Samīʿ ul-ʿAlīm."
+  nima-afiya-sitr:
+    - "Allāhumma innī "
+    - {morning: "aṣbaḥtu", evening: "amsaytu"}
+    - " minka fī niʿmatin wa ʿāfiyatin wa sitr, fa-atmim niʿmataka ʿalayya wa ʿāfiyataka wa sitraka fi al-dunyā wa al-ākhirah."
+  ushhiduka:
+    - "Allāhumma innī "
+    - {morning: "aṣbaḥtu", evening: "amsaytu"}
+    - " ushhiduk, wa ushhidu ḥamalata ʿarshik wa malāʾikataka wa jamīʿa khalqik, annaka anta Allāhu lā ilāha illā anta waḥdaka lā sharīka lak, wa anna Sayyidanā Muḥammadan ʿabduka wa rasūluk."
+  hamdan-yuwafi: "Al-ḥamdu lillāhi Rabb il-ʿālamīn, ḥamdan yuwāfī niʿamahu wa yukāfiʾu mazīdah."
+  amantu: "Āmantu billāh il-ʿAẓīm, wa kafartu bil-jibti wa al-ṭāghūt, wastamsaktu bil-ʿurwat il-wuthqā, lan-fiṣāma lahā wa Allāhu Samīʿun ʿAlīm."
+  raditu: "Raḍītu billāhi Rabbā, wa bil-Islāmi dīnā, wa bi-Sayyidinā Muḥammadin ṣallā Allāhu ʿalayhi wa ālihi wa sallama nabiyyan wa rasūlā."
+  hasbiya: "Ḥasbī Allāhu lā ilāha illā Huwa ʿalayhi tawakkaltu wa Huwa Rabb ul-ʿarsh il-ʿaẓīm."
+  salat-wa-sahbihi: "Allāhumma ṣalli ʿalā Sayyidinā Muḥammadin wa ālihi wa ṣaḥbihi wa sallim."
+  fujaat: "Allāhumma innī asʾaluka min fujāʾat il-khayr, wa aʿūdhu bika min fujāʾat il-sharr."
+  sayyid-al-istighfar: "Allāhumma anta Rabbī lā ilāha illā ant, khalaqtanī wa anā ʿabduk, wa anā ʿalā ʿahdika wa waʿdika mā astaṭaʿt, aʿūdhu bika min sharri mā ṣanaʿt, abūʾu laka bi-niʿmatika ʿalayya wa abūʾu bi-dhanbī, faghfir lī, fa-innahu lā yaghfir ul-dhunūba illā ant."
+  alayka-tawakkaltu: "Allāhumma anta Rabbī lā ilāha illā ant, ʿalayka tawakkaltu wa anta Rabb ul-ʿarsh il-ʿaẓīm."
+  ma-shaa-allah: "Mā shāʾ Allāhu kān, wa mā lam yashaʾ lam yakun, wa lā ḥawla wa lā quwwata illā billāh il-ʿAliyy il-ʿAẓīm."
+  alamu: "Aʿlamu anna Allāha ʿalā kulli shayʾin qadīr wa anna Allāha qad aḥāṭa bi-kulli shayʾin ʿilmā."
+  sharri-nafsi: "Allāhumma innī aʿūdhu bika min sharri nafsī, wa min sharri kulli dābbatin anta ākhidhun bi-nāṣiyatihā, inna Rabbī ʿalā ṣirāṭin mustaqīm."
+  ya-hayyu: "Yā Ḥayyu yā Qayyūm, bi-raḥmatika astaghīth, wa min ʿadhābika astajīr, aṣliḥ lī shaʾnī kullah, wa lā takilnī ilā nafsī wa lā ilā aḥadin min khalqika ṭarfata ʿayn."
+  hamm-hazan: "Allāhumma innī aʿūdhu bika min al-hammi wa al-ḥazan, wa aʿūdhu bika min al-ʿajzi wa al-kasal, wa aʿūdhu bika min al-jubni wa al-bukhl, wa aʿūdhu bika min ghalabat il-dayni wa qahr il-rijāl."
+  afiya: "Allāhumma innī asʾaluk al-ʿāfiyah fī al-dunyā wa al-ākhirah."
+  afw-afiya: "Allāhumma innī asʾaluk al-ʿafwa wa al-ʿāfiyah wa al-muʿāfāt al-dāʾimah fī dīnī wa dunyāya wa ahlī wa mālī."
+  ustur: "Allāhumma ustur ʿawrātī wa āmin rawʿātī."
+  ihfazni: "Allāhumma iḥfaẓnī min bayna yadayya wa min khalfī, wa ʿan yamīnī wa ʿan shimālī wa min fawqī, wa aʿūdhu bi-ʿaẓamatika an ughtāla min taḥtī."
+  khalaqtani: "Allāhumma anta khalaqtanī wa anta tahdīnī wa anta tuṭʿimunī wa anta tasqīnī wa anta tumītunī wa anta tuḥyīnī, wa anta ʿalā kulli shayʾin qadīr."
+  fitrat-al-islam:
+    - {morning: "Aṣbaḥnā", evening: "Amsaynā"}
+    - " ʿalā fiṭrat il-Islām wa ʿalā kalimat il-ikhlāṣ wa ʿalā dīni nabiyyinā Muḥammadin ṣallā Allāhu ʿalayhi wa ālihi wa sallam, wa ʿalā millati abīnā Ibrāhīma ḥanīfan musliman wa mā kāna min al-mushrikīn."
+  bika-asbahna:
+    - "Allāhumma bika "
+    - {morning: "aṣbaḥnā", evening: "amsaynā"}
+    - " wa bika "
+    - {morning: "amsaynā", evening: "aṣbaḥnā"}
+    - " wa bika naḥyā wa bika namūt wa ʿalayka natawakkal wa ilayk "
+    - {morning: "al-nushūr", evening: "al-maṣīr"}
+    - "."
+  al-mulku-lillah:
+    - {morning: "Aṣbaḥnā", evening: "Amsaynā"}
+    - " "
+    - {morning: "wa aṣbaḥa", evening: "wa amsā"}
+    - " al-mulku lillāh, wa al-ḥamdu lillāhi Rabb il-ʿālamīn."
+  khayra-hadha-al-yawm:
+    - "Allāhumma innī asʾaluka khayra "
+    - {morning: "hādhā al-yawm", evening: "hādhihi al-laylah"}
+    - ", "
+    - {morning: "fatḥahu", evening: "fatḥahā"}
+    - " "
+    - {morning: "wa naṣrahu", evening: "wa naṣrahā"}
+    - " "
+    - {morning: "wa nūrahu", evening: "wa nūrahā"}
+    - " "
+    - {morning: "wa barakatahu", evening: "wa barakatahā"}
+    - " "
+    - {morning: "wa hudāh", evening: "wa hudāhā"}
+    - "."
+  khayra-ma-fih:
+    - "Allāhumma innī asʾaluka khayra "
+    - {morning: "hādhā al-yawmi", evening: "hādhihi al-laylati"}
+    - " wa khayra mā "
+    - {morning: "fīh", evening: "fīhā"}
+    - ", wa khayra mā "
+    - {morning: "qablahu", evening: "qablahā"}
+    - " wa khayra mā "
+    - {morning: "baʿdah", evening: "baʿdahā"}
+    - ", wa aʿūdhu bika min sharri "
+    - {morning: "hādhā al-yawmi", evening: "hādhihi al-laylati"}
+    - " wa sharri mā "
+    - {morning: "fīh", evening: "fīhā"}
+    - ", wa sharri mā "
+    - {morning: "qablahu", evening: "qablahā"}
+    - " wa sharri mā "
+    - {morning: "baʿdah", evening: "baʿdahā"}
+    - "."
+  ma-asbaha-bi:
+    - "Allāhumma mā "
+    - {morning: "aṣbaḥa", evening: "amsā"}
+    - " bī min niʿmatin aw bi-aḥadin min khalqik, fa-minka waḥdaka lā sharīka lak, fa-laka al-ḥamdu wa laka al-shukru ʿalā dhālik."
+  subhan-allah-wa-bihamdih: "Subḥān Allāhi wa bi-ḥamdihi ʿadada khalqihi wa riḍāʾ nafsihi wa zinata ʿarshihi wa midāda kalimātih."
+  subhan-allah-al-azim: "Subḥān Allāhi al-ʿAẓīmi wa bi-ḥamdihi ʿadada khalqihi wa riḍāʾ nafsihi wa zinata ʿarshihi wa midāda kalimātih."
+  adad-tasbih: "Subḥān Allāhi ʿadada mā khalaqa fī al-samāʾ, subḥān Allāhi ʿadada mā khalaqa fī al-arḍ, subḥān Allāhi ʿadada mā bayna dhālik, subḥān Allāhi ʿadada mā Huwa khāliq."
+  adad-tahmid: "Al-ḥamdu lillāhi ʿadada mā khalaqa fī al-samāʾ, al-ḥamdu lillāhi ʿadada mā khalaqa fī al-arḍ, al-ḥamdu lillāhi ʿadada mā bayna dhālik, al-ḥamdu lillāhi ʿadada mā Huwa khāliq."
+  adad-tahlil: "Lā ilāha illā Allāh ʿadada mā khalaqa fī al-samāʾ, lā ilāha illā Allāh ʿadada mā khalaqa fī al-arḍ, lā ilāha illā Allāh ʿadada mā bayna dhālik, lā ilāha illā Allāh ʿadada mā Huwa khāliq."
+  adad-takbir: "Allāhu akbar ʿadada mā khalaqa fī al-samāʾ, Allāhu akbar ʿadada mā khalaqa fī al-arḍ, Allāhu akbar ʿadada mā bayna dhālik, Allāhu akbar ʿadada mā Huwa khāliq."
+  adad-hawqala: "Lā ḥawla wa lā quwwata illā billāh il-ʿAliyy il-ʿAẓīm ʿadada mā khalaqa fī al-samāʾ, lā ḥawla wa lā quwwata illā billāh il-ʿAliyy il-ʿAẓīm ʿadada mā khalaqa fī al-arḍ, lā ḥawla wa lā quwwata illā billāh il-ʿAliyy il-ʿAẓīm ʿadada mā bayna dhālik, lā ḥawla wa lā quwwata illā billāh il-ʿAliyy il-ʿAẓīm ʿadada mā Huwa khāliq."
+  tahlil-dharrah: "Lā ilāha illā Allāhu waḥdahu lā sharīka lah, lahu ul-mulku wa lahu ul-ḥamdu, yuḥyī wa yumīt wa Huwa ʿalā kulli shayʾin qadīr, ʿadada kulli dharratin alfa marrah."
+  salat-miftah: "Allāhumma ṣalli wa sallim ʿalā Sayyidinā Muḥammadin miftāḥi bāb raḥmat Illāh, ʿadada mā fī ʿilm Illāh, ṣalātan wa salāman dāʾimayni bi-dawāmi mulk Illāh, wa ʿalā ālihi wa ṣaḥbihi ʿadada kulli dharratin alfa marrah."

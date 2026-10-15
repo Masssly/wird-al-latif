@@ -1,0 +1,23 @@
+# Hausa.  So far only the Qurʾān translation, transcribed from print into
+# data/transcriptions/hausa_gumi.yaml (third-party, unproofread).  Duʿā meanings in
+# Hausa are still to be written (status draft).
+
+meta:
+  lang: ha
+  name: Hausa
+  native_name: Hausa
+  status: draft
+  translator: null
+  reviewers: []
+  source: "Qurʾān: Abubakar Mahmoud Gumi (King Fahd Complex print, transcribed); duʿās not yet translated"
+  licence: "proposed CC BY-SA 4.0 for new material (not yet confirmed)"
+  version: "1.0"
+
+quran:
+  source: transcription
+  file: data/transcriptions/hausa_gumi.yaml
+
+ui:
+  label: HA
+
+items: {}

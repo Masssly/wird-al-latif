@@ -1,0 +1,23 @@
+# Dagbanli.  So far only the Qurʾān translation, transcribed from print into
+# data/transcriptions/dagbani_gbetobu.yaml (third-party, unproofread).  Duʿā meanings in
+# Dagbanli are still to be written (status draft).
+
+meta:
+  lang: dag
+  name: Dagbanli
+  native_name: Dagbanli
+  status: draft
+  translator: null
+  reviewers: []
+  source: "Qurʾān: Muḥammad Bābā Gbetobu (King Fahd Complex print, transcribed); duʿās not yet translated"
+  licence: "proposed CC BY-SA 4.0 for new material (not yet confirmed)"
+  version: "1.0"
+
+quran:
+  source: transcription
+  file: data/transcriptions/dagbani_gbetobu.yaml
+
+ui:
+  label: DAG
+
+items: {}

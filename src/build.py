@@ -5,9 +5,8 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "src"))
 from weasyprint import HTML
-from content import ITEMS, SECTIONS
-from dagbani import DAG, DAG_BISM
-from hausa import HAU, HAU_BISM
+from wird_data import legacy
+SECTIONS, ITEMS, DAG, DAG_BISM, HAU, HAU_BISM = legacy()
 
 EDITION = "Edition 1.0 · October 2026"
 COMPILER = "Mohammed Sadat Abdulai"
@@ -379,6 +378,8 @@ def render():
     return "\n".join(out)
 
 if __name__ == "__main__":
+    for d in ("build", "dist"):
+        os.makedirs(os.path.join(ROOT, d), exist_ok=True)
     h = render()
     body_start = h.index("<body>")
     h = h[:body_start] + h[body_start:].replace("ﷺ", '<span class="saw">ﷺ</span>')
