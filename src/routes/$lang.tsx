@@ -5,7 +5,7 @@ import { ItemCard } from "@/components/wird/ItemCard";
 import { ReaderSettings } from "@/components/wird/ReaderSettings";
 import { StatusBadge } from "@/components/wird/StatusBadge";
 import { useProgress, useSettings, useWhen } from "@/lib/reader-state";
-import { isLang, WIRD } from "@/lib/wird";
+import { getLang, isLang, WIRD } from "@/lib/wird";
 
 export const Route = createFileRoute("/$lang")({
   beforeLoad: ({ params }) => {
@@ -33,8 +33,8 @@ export const Route = createFileRoute("/$lang")({
 
 function Reader() {
   const { lang: code } = Route.useParams();
-  const lang = WIRD.langs[code];
-  const en = WIRD.langs.en;
+  const lang = getLang(code);
+  const en = getLang("en");
   const [when, setWhen] = useWhen();
   const [settings, update] = useSettings();
   const { counts, tap, reset } = useProgress(when);

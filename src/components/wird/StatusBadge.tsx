@@ -15,7 +15,7 @@ export function StatusBadge({ status, short = true }: { status: LangMeta["status
         : "bg-sun text-sun-foreground";
   return (
     <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-[0.68rem] font-semibold ${cls}`}>
-      {short ? status[0].toUpperCase() + status.slice(1) : LABEL[status]}
+      {short ? status.charAt(0).toUpperCase() + status.slice(1) : LABEL[status]}
     </span>
   );
 }

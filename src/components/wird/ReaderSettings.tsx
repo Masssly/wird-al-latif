@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Drawer } from "vaul";
 import type { Settings } from "@/lib/reader-state";
-import { LANG_ORDER, WIRD } from "@/lib/wird";
+import { getLang, LANG_ORDER } from "@/lib/wird";
 import { Legend } from "./Legend";
 import { StatusBadge } from "./StatusBadge";
 
@@ -45,7 +45,7 @@ export function ReaderSettings({ open, onOpenChange, settings, update, current }
               <div className="grid grid-cols-3 gap-1 rounded-full bg-muted p-1">
                 {(["system", "light", "dark"] as const).map((t) => (
                   <Seg key={t} active={settings.theme === t} onClick={() => update({ theme: t })}>
-                    {t[0].toUpperCase() + t.slice(1)}
+                    {t.charAt(0).toUpperCase() + t.slice(1)}
                   </Seg>
                 ))}
               </div>
@@ -54,7 +54,7 @@ export function ReaderSettings({ open, onOpenChange, settings, update, current }
             <Group label="Language">
               <div className="space-y-1">
                 {LANG_ORDER.map((c) => {
-                  const m = WIRD.langs[c].meta;
+                  const m = getLang(c).meta;
                   return (
                     <Link
                       key={c}

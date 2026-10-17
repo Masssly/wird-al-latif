@@ -2,7 +2,6 @@ import { Check, RotateCcw } from "lucide-react";
 import { WIRD, type Item, type Lang, type When } from "@/lib/wird";
 import { Rich } from "./Rich";
 
-const toArabicDigits = (n: number) => String(n).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[+d]);
 
 type Props = {
   item: Item;
@@ -20,6 +19,7 @@ export function ItemCard({ item, n, lang, en, when, count, onTap, showTranslit, 
   const done = count >= item.repeat;
   const heading = lang.headings[item.id] ?? en.headings[item.id];
   const tl = WIRD.translit;
+  const itemTl = tl.items[item.id];
 
   return (
     <article id={item.id} className="scroll-mt-20 border-b border-border py-6">
@@ -45,9 +45,9 @@ export function ItemCard({ item, n, lang, en, when, count, onTap, showTranslit, 
           <p lang="ar" dir="rtl" className="text-ar font-dua text-ink">
             <Rich text={item.arabic!} when={when} mode={item.kind === "quote" ? "uthmani" : "arabic"} />
           </p>
-          {showTranslit && tl.items[item.id] && (
+          {showTranslit && itemTl && (
             <p lang="ar-Latn" className="text-lat mt-2 italic text-foreground/85">
-              <Rich text={tl.items[item.id]} when={when} mode="translit" />
+              <Rich text={itemTl} when={when} mode="translit" />
             </p>
           )}
           {showMeaning && <Meaning item={item} lang={lang} en={en} when={when} />}
@@ -168,4 +168,3 @@ function QuranBody({
   );
 }
 
-export { toArabicDigits };

@@ -7,7 +7,7 @@ describe("wird data", () => {
   });
   it("starts 23:97 at Rabbi, without wa-qul", () => {
     const it97 = allItems().find((i) => i.id === "muminun-97")!;
-    expect(it97.verses![0].ar.startsWith("\u0631")).toBe(true);
+    expect(it97.verses![0]!.ar.startsWith("\u0631")).toBe(true);
   });
   it("every language has a translation for every verse read", () => {
     const keys = allItems().flatMap((i) => i.verses?.map((v) => v.key) ?? []);
@@ -29,7 +29,7 @@ describe("morning / evening", () => {
 describe("colour code", () => {
   it("marks Allah red and Muhammad green", () => {
     expect(colourMeaning("O Allah, bless Muhammad").filter((t) => t.c).map((t) => t.c)).toEqual(["allah", "nabi"]);
-    expect(colourArabic("اللَّهُ", false)[0].c).toBe("allah");
+    expect(colourArabic("اللَّهُ", false)[0]!.c).toBe("allah");
   });
   it("greys the silent lām of ٱلشَّمۡسِ", () => {
     expect(colourArabic("ٱلشَّمۡسِ", true).some((t) => t.c === "silent")).toBe(true);

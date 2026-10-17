@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ChevronRight, Download } from "lucide-react";
 import { StatusBadge } from "@/components/wird/StatusBadge";
-import { COMPILER, LANG_ORDER, WIRD } from "@/lib/wird";
+import { COMPILER, getLang, LANG_ORDER, WIRD } from "@/lib/wird";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -48,7 +48,7 @@ function Home() {
           </h2>
           <ul className="space-y-2">
             {LANG_ORDER.map((c) => {
-              const m = WIRD.langs[c].meta;
+              const m = getLang(c).meta;
               return (
                 <li key={c}>
                   <Link

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { A, H2, PageShell } from "@/components/wird/PageShell";
-import { COMPILER, WIRD } from "@/lib/wird";
+import { COMPILER, getLang } from "@/lib/wird";
 
 export const Route = createFileRoute("/sources")({
   head: () => ({
@@ -20,8 +20,8 @@ export const Route = createFileRoute("/sources")({
 });
 
 function Sources() {
-  const en = WIRD.langs.en.quran;
-  const de = WIRD.langs.de.quran;
+  const en = getLang("en").quran;
+  const de = getLang("de").quran;
   return (
     <PageShell title="Sources">
       <H2>Qurʾānic Arabic</H2>

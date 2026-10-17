@@ -64,6 +64,7 @@ export const COMPILER = "Mohammed Sadat Abdulai";
 /** Display order of languages on the site. */
 export const LANG_ORDER = ["en", "de", "ha", "dag"].filter((c) => c in WIRD.langs);
 export const isLang = (c: string) => c in WIRD.langs;
+export const getLang = (c: string): Lang => (WIRD.langs[c] ?? WIRD.langs["en"])!;
 
 export const allItems = () => WIRD.sections.flatMap((s) => s.items);
 
@@ -115,7 +116,7 @@ function colourWord(w: string, uthmani: boolean): Tok[] {
   const cl = clusters(w);
   const silent = cl.map((c, i) => {
     let s = false;
-    if (c === "\u0644" && i + 1 < cl.length && SUN.has(cl[i + 1][0]) && cl[i + 1].includes("\u0651")) s = true;
+    if (c === "\u0644" && i + 1 < cl.length && SUN.has(cl[i + 1]![0]!) && cl[i + 1]!.includes("\u0651")) s = true;
     if (uthmani && c.includes("\u0652")) s = true;
     return s;
   });
@@ -125,8 +126,8 @@ function colourWord(w: string, uthmani: boolean): Tok[] {
   while (i < cl.length) {
     let j = i;
     while (j < cl.length && silent[j] === silent[i]) j++;
-    const lead = i > 0 && !RIGHT_ONLY.has(cl[i - 1][0]) ? ZWJ : "";
-    const trail = j < cl.length && !RIGHT_ONLY.has(cl[j - 1][0]) ? ZWJ : "";
+    const lead = i > 0 && !RIGHT_ONLY.has(cl[i - 1]![0]!) ? ZWJ : "";
+    const trail = j < cl.length && !RIGHT_ONLY.has(cl[j - 1]![0]!) ? ZWJ : "";
     const seg = lead + cl.slice(i, j).join("") + trail;
     out.push(silent[i] ? { t: seg, c: "silent" } : { t: seg });
     i = j;
