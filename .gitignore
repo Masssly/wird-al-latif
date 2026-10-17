@@ -1,4 +1,10 @@
-# Logs
+# Python / PDF build
+__pycache__/
+*.pyc
+.pytest_cache/
+build/
+
+# Web build (Lovable template)
 logs
 *.log
 npm-debug.log*

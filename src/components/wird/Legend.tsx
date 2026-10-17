@@ -1,7 +1,10 @@
 import { colourArabic } from "@/lib/wird";
 
+/** ٱلشَّمۡسِ, code point for code point as in pdf/build.py's legend example. */
+const SHAMS = "\u0671\u0644\u0634\u064e\u0651\u0645\u06e1\u0633\u0650";
+
 export function Legend() {
-  const ex = colourArabic("ٱلشَّمۡسِ", true);
+  const ex = colourArabic(SHAMS, true);
   return (
     <ul className="space-y-2.5 text-sm">
       <li className="flex gap-3">
