@@ -1,7 +1,7 @@
 # Data format
 
 All text lives in YAML files. The build scripts read them, and
-`src/wird_data.py` checks them on every load. If a file breaks a rule below,
+`pdf/wird_data.py` checks them on every load (the website reads the same files through `scripts/build-wird-data.ts`). If a file breaks a rule below,
 the build stops with an error that names the file and the item.
 
 ```

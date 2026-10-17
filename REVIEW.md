@@ -105,7 +105,7 @@ Small ones may be typing slips, for example 59:22 *Nambɔnaa*, where the basmala
 ## Decisions for the owner
 
 ### R-Q1 · 23:97 is not used quite verbatim · open
-`data/wird.yaml` item `muminun-97` (`opening`), applied in `src/build.py`.
+`data/wird.yaml` item `muminun-97` (`opening`), applied in `pdf/build.py` and `scripts/build-wird-data.ts`.
 The wird begins at *Rabbī*, so the build drops وَقُل and writes رَبِّ instead of KFGQPC's رَّبِّ, without the shadda.
 That is a change to KFGQPC text, while the 1.0 Sources page says "Used verbatim; in 23:97 the wird begins at Rabbī".
 Options:
@@ -119,11 +119,17 @@ Ask KFGQPC or QuranEnc whether the transcribed text may be redistributed on a pu
 ## Bugs in the edition 1.0 build (kept for now so the PDF reproduces exactly)
 
 ### R-B1 · Grey "silent letters" are never shown · open
-`src/build.py`.
+`pdf/build.py`.
 The How-to page says grey letters are written but not pronounced, but no letter in the PDF is grey, not even its own example ٱلشَّمۡسِ.
 Cause: `SUN` is defined twice. First it is the set of sun letters used for lām al-shamsiyya. Later it is overwritten with the sun icon's data URI, so the lām check always fails.
 The other rule, the Madinah round zero (U+0652) in Qurʾān text, matches only one letter in the verses used (تَوَلَّوۡاْ in 9:129), and that word comes before the quoted part.
 Fixing this changes the PDF on purpose, so do it in the template rewrite (milestone 2) and regenerate the baseline in the same commit.
+**The website already differs:** its port of these rules (`src/lib/wird.ts`) has no such clash, so the site does grey the silent lām.
+That colouring has not been reviewed, and the web and PDF disagree until this is settled.
+
+### R-W1 · Website shows 9:129 in Amiri, the PDF in the KFGQPC font · open
+`src/components/wird/ItemCard.tsx`.
+The quoted end of 9:129 (item 17, `hasbiya`) is KFGQPC text, but the website sets it in Amiri (`font-dua`) like the duʿās, while the PDF uses the Madinah muṣḥaf font.
 
 ### R-B2 · German has no duʿā meanings · open
 `i18n/de.yaml` has only the Qurʾān translation.

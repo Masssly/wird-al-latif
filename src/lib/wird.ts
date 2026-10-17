@@ -88,7 +88,7 @@ export function defaultWhen(d = new Date()): When {
 }
 
 // ------------------------------------------------------------ colour coding
-// Port of the edition 1.0 PDF rules (src/build.py in the original repo).
+// Port of the edition 1.0 PDF rules in pdf/build.py (see REVIEW.md R-B1 for one difference).
 export type Tok = { t: string; c?: "allah" | "nabi" | "silent" };
 
 const ZWJ = "\u200d";
