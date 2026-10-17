@@ -26,7 +26,7 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   return (
-    <div className="min-h-dvh paper-grain">
+    <div className="min-h-dvh">
       <main className="mx-auto flex min-h-dvh max-w-md flex-col px-5 pt-safe pb-safe">
         <div className="flex flex-1 flex-col justify-center py-12 text-center">
           <p lang="ar" dir="rtl" className="font-dua text-6xl leading-[1.6] text-ink">
