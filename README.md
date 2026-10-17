@@ -15,7 +15,7 @@ Hosted on GitHub; the website will be published with GitHub Pages, built by GitH
 ## Build
 
 ```sh
-# Website (TanStack Start + React; also editable in Lovable)
+# Website (TanStack Start + React)
 bun install
 bun scripts/build-wird-data.ts      # regenerate src/data/wird.json after editing data/ or i18n/
 bun run dev
@@ -51,7 +51,7 @@ STATIC_SITE=1 BASE_PATH=/wird-al-latif/ bunx vite build   # → dist/client/
 | `pdf/` | the PDF build (`build.py`) and the YAML loader/validator (`wird_data.py`) |
 | `tests/` | Python tests and the edition 1.0 baseline PDF; website tests are in `src/test/` |
 | `docs/DATA.md` | the data format |
-| `AGENTS.md` | rules for everyone editing the repository, including Lovable |
+| `AGENTS.md` | rules for everyone editing the repository |
 
 ## Sources and licences
 

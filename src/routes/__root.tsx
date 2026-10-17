@@ -11,10 +11,9 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 import { useOnline } from "../lib/reader-state";
 
-// "/" in Lovable and locally; "/wird-al-latif/" on GitHub Pages (see vite.config.ts).
+// "/" by default; "/wird-al-latif/" on GitHub Pages (see vite.config.ts).
 const BASE = import.meta.env.BASE_URL;
 
 function NotFoundComponent() {
@@ -42,9 +41,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -88,7 +84,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: `${BASE}favicon.ico`, type: "image/x-icon" },
-      { rel: "preload", href: `${BASE}fonts/hafs.18.ttf`, as: "font", type: "font/ttf", crossOrigin: "anonymous" },
+      {
+        rel: "preload",
+        href: `${BASE}fonts/hafs.18.ttf`,
+        as: "font",
+        type: "font/ttf",
+        crossOrigin: "anonymous",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -121,10 +123,8 @@ function RootComponent() {
 
   useEffect(() => {
     if (!("serviceWorker" in navigator)) return;
-    const h = location.hostname;
-    const inEditor =
-      window.self !== window.top || h.includes("id-preview--") || h.includes("lovableproject.com") || h === "localhost";
-    if (inEditor) {
+    // No offline cache while developing or when shown inside another page (an editor preview).
+    if (import.meta.env.DEV || window.self !== window.top) {
       navigator.serviceWorker.getRegistrations().then((rs) => rs.forEach((r) => r.unregister()));
       return;
     }

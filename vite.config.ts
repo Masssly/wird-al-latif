@@ -1,14 +1,11 @@
-// @lovable.dev/vite-tanstack-config already includes the following — do NOT add them manually
-// or the app will break with duplicate plugins:
-//   - TanStack devtools (dev-only, first), tanstackStart, viteReact, tailwindcss, tsConfigPaths,
-//     nitro (build-only using cloudflare as a default target), VITE_* env injection, @ path alias,
-//     React/TanStack dedupe, error logger plugins, and sandbox detection (port/host/strictPort).
-// You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
+// The shared config already sets up TanStack Start, React, Tailwind, the @ path
+// alias and the build target. Adding those plugins here again breaks the build;
+// pass extra settings through defineConfig({ vite: { ... } }) instead.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 // GitHub Pages build (set by .github/workflows/pages.yml): every page is
 // prerendered to static HTML and served under BASE_PATH (e.g. /wird-al-latif/).
-// Lovable's own preview and publish builds ignore this and keep their defaults.
+// Without STATIC_SITE=1 (local development, other hosts) the defaults apply.
 const STATIC = process.env["STATIC_SITE"] === "1";
 const BASE = process.env["BASE_PATH"] || "/";
 
