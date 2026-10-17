@@ -1,0 +1,25 @@
+# German.  So far only the Qurʾān translation (third-party, used verbatim; not
+# copied here).  Duʿā meanings in German are still to be written (status draft).
+
+meta:
+  lang: de
+  name: German
+  native_name: Deutsch
+  status: draft
+  translator: null
+  reviewers: []
+  source: "Qurʾān: Frank Bubenheim and Nadeem Elyas via QuranEnc; duʿās not yet translated"
+  licence: "proposed CC BY-SA 4.0 for new material (not yet confirmed)"
+  version: "1.0"
+
+quran:
+  source: quranenc
+  key: german_bubenheim
+  version: "1.1.4"
+  file: data/quranenc/german_bubenheim/1.1.4-b4308b0db371b2ff.json.gz
+  footnotes: omit
+
+ui:
+  label: DE
+
+items: {}

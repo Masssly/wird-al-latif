@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { useOnline } from "../lib/reader-state";
 
 function NotFoundComponent() {
   return (
@@ -77,22 +78,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
+      { name: "theme-color", content: "#fbf8f1" },
+      { name: "author", content: "Mohammed Sadat Abdulai" },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "preload", href: "/fonts/hafs.18.ttf", as: "font", type: "font/ttf", crossOrigin: "anonymous" },
     ],
   }),
   shellComponent: RootShell,
@@ -101,11 +94,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+// Applies the saved theme before paint to avoid a flash.
+const THEME_SCRIPT = `try{var t=(JSON.parse(localStorage.getItem('wird:settings')||'{}').theme)||'system';if(t==='dark'||(t==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}`;
+
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
       <body>
         {children}
@@ -117,10 +114,27 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const online = useOnline();
+
+  useEffect(() => {
+    if (!("serviceWorker" in navigator)) return;
+    const h = location.hostname;
+    const inEditor =
+      window.self !== window.top || h.includes("id-preview--") || h.includes("lovableproject.com") || h === "localhost";
+    if (inEditor) {
+      navigator.serviceWorker.getRegistrations().then((rs) => rs.forEach((r) => r.unregister()));
+      return;
+    }
+    navigator.serviceWorker.register("/sw.js").catch(() => {});
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+      {!online && (
+        <div className="fixed inset-x-0 top-0 z-50 bg-moon pt-safe text-center text-xs font-semibold text-moon-foreground">
+          <p className="py-1">Offline · reading the saved copy</p>
+        </div>
+      )}
       <Outlet />
     </QueryClientProvider>
   );
