@@ -61,8 +61,8 @@ export type WirdData = {
 
 export const WIRD = raw as unknown as WirdData;
 export const COMPILER = "Mohammed Sadat Abdulai";
-/** Display order of languages on the site. */
-export const LANG_ORDER = ["en", "de", "ha", "dag"].filter((c) => c in WIRD.langs);
+/** Display order of languages on the site: alphabetical by native name, Arabic first (the source language). */
+export const LANG_ORDER = ["dag", "de", "en", "ha"].filter((c) => c in WIRD.langs);
 export const isLang = (c: string) => c in WIRD.langs;
 export const getLang = (c: string): Lang => (WIRD.langs[c] ?? WIRD.langs["en"])!;
 
