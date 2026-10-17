@@ -1,0 +1,127 @@
+# English.  Duʿā meanings are new translations made for this edition.
+# Qurʾān translation: QuranEnc (third-party, used verbatim; not copied here).
+
+meta:
+  lang: en
+  name: English
+  native_name: English
+  status: draft
+  translator: "Mohammed Sadat Abdulai"
+  reviewers: []
+  source: "New translations of the duʿās made for edition 1.0"
+  licence: "proposed CC BY-SA 4.0 (not yet confirmed)"
+  version: "1.0"
+
+quran:
+  source: quranenc
+  key: english_rwwad
+  version: "1.0.19"
+  file: data/quranenc/english_rwwad/1.0.19-288aad99be073280.json.gz
+  footnotes: omit   # the [n] markers are dropped; the footnotes are not reproduced
+
+ui:
+  label: EN
+  from_quran: "From Qurʾān {ref}"
+
+sections:
+  quran:
+    title: "Qurʾānic passages"
+    description: "Sūrahs and verses recited at the start"
+  protection:
+    title: "Seeking protection"
+    description: "Placing oneself in Allah’s care"
+  witness:
+    title: "Thanks and bearing witness"
+    description: "Faith, contentment and trust"
+  asking:
+    title: "Asking Allah"
+    description: "Forgiveness, help and well-being"
+  morning-evening:
+    title: "Greeting the morning and evening"
+    description: "Lines that change in the evening"
+  glorification:
+    title: "Glorifying Allah"
+    description: "Praise, glorification and blessings on the Prophet ﷺ"
+
+headings:
+  ikhlas: "Sūrat al-Ikhlāṣ (112)"
+  falaq: "Sūrat al-Falaq (113)"
+  nas: "Sūrat al-Nās (114)"
+  muminun-97: "Sūrat al-Muʾminūn 23:97–98"
+  muminun-115: "Sūrat al-Muʾminūn 23:115–118"
+  rum-17: "Sūrat al-Rūm 30:17–19"
+  taawwudh: "Seeking refuge before al-Ḥashr"
+  hashr-21: "Sūrat al-Ḥashr 59:21–24"
+  saffat-79: "Sūrat al-Ṣāffāt 37:79–81"
+
+items:
+  taawwudh: "I seek refuge in Allah, the All-Hearing, the All-Knowing, from Satan, the outcast."
+  kalimat-tammat: "I seek refuge in the perfect words of Allah from the evil of what He has created."
+  bismillah-la-yadurr: "In the name of Allah, with whose name nothing on earth or in the sky can cause harm, and He is the All-Hearing, the All-Knowing."
+  nima-afiya-sitr:
+    - "O Allah, I have reached "
+    - {morning: "the morning", evening: "the evening"}
+    - " in blessing, well-being and protection from You. So complete Your blessing, Your well-being and Your protection upon me, in this world and the next."
+  ushhiduka:
+    - "O Allah, I have reached "
+    - {morning: "the morning", evening: "the evening"}
+    - " calling You to witness, and calling to witness the bearers of Your Throne, Your angels and all Your creation, that You are Allah: there is no god but You, alone, without partner, and that our master Muhammad is Your servant and Your messenger."
+  hamdan-yuwafi: "All praise is for Allah, Lord of the worlds — praise that matches His blessings and is equal to His ever-growing favour."
+  amantu: "I believe in Allah, the Magnificent, and I reject all idols and false gods. I hold on to the firmest handhold, which never breaks. And Allah is All-Hearing, All-Knowing."
+  raditu: "I am pleased with Allah as my Lord, with Islam as my religion, and with our master Muhammad — may Allah bless him and his family and grant them peace — as my Prophet and Messenger."
+  hasbiya: "Allah is enough for me; there is no god but Him. In Him I put my trust, and He is the Lord of the Mighty Throne."
+  salat-wa-sahbihi: "O Allah, send blessings and peace upon our master Muhammad, his family and his companions."
+  fujaat: "O Allah, I ask You for good that comes suddenly, and I seek refuge in You from evil that comes suddenly."
+  sayyid-al-istighfar: "O Allah, You are my Lord; there is no god but You. You created me and I am Your servant. I keep my promise and pledge to You as best I can. I seek refuge in You from the evil of what I have done. I admit Your blessings upon me, and I admit my sins — so forgive me, for no one forgives sins except You."
+  alayka-tawakkaltu: "O Allah, You are my Lord; there is no god but You. In You I put my trust, and You are the Lord of the Mighty Throne."
+  ma-shaa-allah: "Whatever Allah wills happens, and whatever He does not will does not happen. There is no power and no strength except through Allah, the Most High, the Magnificent."
+  alamu: "I know that Allah has power over all things, and that Allah’s knowledge surrounds all things."
+  sharri-nafsi: "O Allah, I seek refuge in You from the evil of my own self, and from the evil of every living creature, each of which You hold by its forelock. Truly, my Lord is on a straight path."
+  ya-hayyu: "O Ever-Living, O Self-Sustaining! By Your mercy I call for help, and from Your punishment I seek protection. Set right all my affairs, and do not leave me to myself, or to any of Your creation, even for the blink of an eye."
+  hamm-hazan: "O Allah, I seek refuge in You from worry and sadness; I seek refuge in You from helplessness and laziness; I seek refuge in You from cowardice and stinginess; and I seek refuge in You from being overwhelmed by debt and overpowered by people."
+  afiya: "O Allah, I ask You for well-being in this world and the next."
+  afw-afiya: "O Allah, I ask You for pardon, well-being and lasting safety in my religion, my worldly life, my family and my wealth."
+  ustur: "O Allah, cover my faults and calm my fears."
+  ihfazni: "O Allah, protect me from in front of me and from behind me, from my right and from my left, and from above me; and I seek refuge in Your greatness from being struck unawares from below me."
+  khalaqtani: "O Allah, You created me and You guide me; You feed me and You give me drink; You cause me to die and You give me life; and You have power over all things."
+  fitrat-al-islam:
+    - "We have reached "
+    - {morning: "the morning", evening: "the evening"}
+    - " upon the natural way of Islam, upon the word of sincere faith, upon the religion of our Prophet Muhammad — may Allah bless him and his family and grant them peace — and upon the way of our father Ibrāhīm, who was upright, a Muslim, and not one of those who worship others besides Allah."
+  bika-asbahna:
+    - "O Allah, by You we reach "
+    - {morning: "the morning", evening: "the evening"}
+    - " and by You we reach "
+    - {morning: "the evening", evening: "the morning"}
+    - "; by You we live and by You we die; in You we put our trust, and to You is "
+    - {morning: "the rising again", evening: "the final return"}
+    - "."
+  al-mulku-lillah:
+    - "We have reached "
+    - {morning: "the morning", evening: "the evening"}
+    - ", and all the kingdom has reached "
+    - {morning: "the morning", evening: "the evening"}
+    - " belonging to Allah. All praise is for Allah, Lord of the worlds."
+  khayra-hadha-al-yawm:
+    - "O Allah, I ask You for the good of "
+    - {morning: "this day", evening: "this night"}
+    - ": its openings, its victory, its light, its blessing and its guidance."
+  khayra-ma-fih:
+    - "O Allah, I ask You for the good of "
+    - {morning: "this day", evening: "this night"}
+    - " and the good of what is in it, the good of what came before it and the good of what comes after it; and I seek refuge in You from the evil of "
+    - {morning: "this day", evening: "this night"}
+    - " and the evil of what is in it, the evil of what came before it and the evil of what comes after it."
+  ma-asbaha-bi:
+    - "O Allah, whatever blessing has come to me or to any of Your creation "
+    - {morning: "this morning", evening: "this evening"}
+    - " is from You alone, without partner. So all praise and all thanks are Yours for it."
+  subhan-allah-wa-bihamdih: "Glory be to Allah and praise be to Him — as many times as the number of His creation, as much as pleases Him, as heavy as His Throne, and as much as the ink of His words."
+  subhan-allah-al-azim: "Glory be to Allah, the Magnificent, and praise be to Him — as many times as the number of His creation, as much as pleases Him, as heavy as His Throne, and as much as the ink of His words."
+  adad-tasbih: "“Glory be to Allah” as many times as all He has created in the sky; “Glory be to Allah” as many times as all He has created on the earth; “Glory be to Allah” as many times as all that is between them; “Glory be to Allah” as many times as all He will yet create."
+  adad-tahmid: "“All praise is for Allah” as many times as all He has created in the sky; “All praise is for Allah” as many times as all He has created on the earth; “All praise is for Allah” as many times as all that is between them; “All praise is for Allah” as many times as all He will yet create."
+  adad-tahlil: "“There is no god but Allah” as many times as all He has created in the sky; “There is no god but Allah” as many times as all He has created on the earth; “There is no god but Allah” as many times as all that is between them; “There is no god but Allah” as many times as all He will yet create."
+  adad-takbir: "“Allah is the Greatest” as many times as all He has created in the sky; “Allah is the Greatest” as many times as all He has created on the earth; “Allah is the Greatest” as many times as all that is between them; “Allah is the Greatest” as many times as all He will yet create."
+  adad-hawqala: "“There is no power and no strength except through Allah, the Most High, the Magnificent” as many times as all He has created in the sky; “There is no power and no strength except through Allah, the Most High, the Magnificent” as many times as all He has created on the earth; “There is no power and no strength except through Allah, the Most High, the Magnificent” as many times as all that is between them; “There is no power and no strength except through Allah, the Most High, the Magnificent” as many times as all He will yet create."
+  tahlil-dharrah: "There is no god but Allah, alone, without partner. His is the kingdom and His is the praise. He gives life and causes death, and He has power over all things — as many times as every atom, a thousand times over."
+  salat-miftah: "O Allah, send blessings and peace upon our master Muhammad, the key to the door of Allah’s mercy — as many times as all that is in Allah’s knowledge — blessings and peace that last as long as Allah’s kingdom lasts; and upon his family and companions, as many times as every atom, a thousand times over."
