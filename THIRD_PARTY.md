@@ -60,8 +60,10 @@ included because nothing reads them; they are on the mirror.
 | Font | Version | Licence | Location |
 |---|---|---|---|
 | Amiri (Regular, Bold) | 1.000 | SIL Open Font License 1.1 (`fonts/Amiri-1.000/OFL.txt`) | `fonts/Amiri-1.000/` |
-| Inter | 4.0 (system package `fonts-inter`) | SIL Open Font License 1.1 | not bundled; installed system-wide |
+| Inter | PDF: 4.0 (system package `fonts-inter`). Website: npm package `@fontsource-variable/inter` | SIL Open Font License 1.1 | PDF: installed system-wide. Website: bundled at build time and served from the site itself |
 | KFGQPC Uthmanic Script HAFS | 0.18 | KFGQPC terms (above) | `data/kfgqpc/font/` |
+
+The website serves byte-identical copies of Amiri and the KFGQPC font from `public/fonts/`. Their checksums are tested too.
 
 ## Other references
 

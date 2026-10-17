@@ -3,7 +3,7 @@
 import sys, re, json, gzip, glob, unicodedata, html as _html
 import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(ROOT, "src"))
+sys.path.insert(0, os.path.join(ROOT, "pdf"))
 from weasyprint import HTML
 from wird_data import legacy
 SECTIONS, ITEMS, DAG, DAG_BISM, HAU, HAU_BISM = legacy()
@@ -378,8 +378,7 @@ def render():
     return "\n".join(out)
 
 if __name__ == "__main__":
-    for d in ("build", "dist"):
-        os.makedirs(os.path.join(ROOT, d), exist_ok=True)
+    os.makedirs(os.path.join(ROOT, "build"), exist_ok=True)
     h = render()
     body_start = h.index("<body>")
     h = h[:body_start] + h[body_start:].replace("ﷺ", '<span class="saw">ﷺ</span>')
@@ -401,5 +400,5 @@ if __name__ == "__main__":
     doc, where2 = pages_for(final)
     assert where == where2, "page numbers shifted"
     open(os.path.join(ROOT, "build", "wird.html"), "w", encoding="utf-8").write(final)
-    doc.write_pdf(os.path.join(ROOT, "dist", "al-Wird-al-Latif.pdf"))
+    doc.write_pdf(os.path.join(ROOT, "build", "al-Wird-al-Latif.pdf"))
     print("ok", len(ITEMS), "items")

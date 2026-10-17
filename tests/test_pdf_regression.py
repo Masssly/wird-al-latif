@@ -16,7 +16,7 @@ from conftest import ROOT
 from pdfglyphs import page_text, signature
 
 BASELINE = os.path.join(ROOT, "tests", "baseline", "al-Wird-al-Latif-1.0.pdf")
-OUT = os.path.join(ROOT, "dist", "al-Wird-al-Latif.pdf")
+OUT = os.path.join(ROOT, "build", "al-Wird-al-Latif.pdf")
 
 
 def _renderer_ok():
@@ -37,7 +37,7 @@ def built():
     why = _renderer_ok()
     if why:
         pytest.skip(why)
-    subprocess.run([sys.executable, os.path.join(ROOT, "src", "build.py")], check=True, cwd=ROOT)
+    subprocess.run([sys.executable, os.path.join(ROOT, "pdf", "build.py")], check=True, cwd=ROOT)
     return signature(OUT)
 
 
