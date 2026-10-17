@@ -29,7 +29,8 @@ export function buildWirdData() {
   const KF = new Map(kfList.map((x) => [`${x.sora}:${x.aya_no}`, x.aya_text]));
   const kf = (s: number, a: number, nonum = false) => {
     const t = KF.get(`${s}:${a}`)!;
-    return nonum ? t.slice(0, t.lastIndexOf(" ")) : t;
+    // KFGQPC puts a no-break space (U+00A0) before the verse number.
+    return nonum ? t.slice(0, t.lastIndexOf("\u00a0")) : t;
   };
 
   function parseVerses(spec: string) {

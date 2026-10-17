@@ -13,6 +13,10 @@ describe("wird data", () => {
     const it97 = allItems().find((i) => i.id === "muminun-97")!;
     expect(it97.verses![0]!.ar.startsWith("ر")).toBe(true);
   });
+  it("shows the whole basmala (all four words, no verse number)", () => {
+    expect(WIRD.basmala.split(" ")).toHaveLength(4);
+    expect(WIRD.basmala).not.toContain("\u00a0");
+  });
   it("every language has a translation for every verse read", () => {
     const keys = allItems().flatMap((i) => i.verses?.map((v) => v.key) ?? []);
     for (const l of Object.values(WIRD.langs)) for (const k of keys) expect(l.quran.verses[k]).toBeTruthy();
