@@ -5,9 +5,9 @@ describe("wird data", () => {
   it("has the 46 items of edition 1.0", () => {
     expect(allItems()).toHaveLength(46);
   });
-  it("starts 23:97 at رَبِّ", () => {
+  it("starts 23:97 at Rabbi, without wa-qul", () => {
     const it97 = allItems().find((i) => i.id === "muminun-97")!;
-    expect(it97.verses![0].ar.startsWith("رَبِّ")).toBe(true);
+    expect(it97.verses![0].ar.startsWith("\u0631")).toBe(true);
   });
   it("every language has a translation for every verse read", () => {
     const keys = allItems().flatMap((i) => i.verses?.map((v) => v.key) ?? []);
