@@ -62,3 +62,4 @@ Design the data model now so it can be added later: an optional `audio` field pe
 ## Decisions log
 - 2026-10-15 · Hosting: **GitHub** (repo Masssly/wird-al-latif, GitHub Pages via GitHub Actions). Output stays static so a move to GitLab Pages remains possible.
 - 2026-10-17 · Single home: **Masssly/wird-al-latif-guide**, the repository Lovable created for its project, because Lovable can only sync with a repository it creates. The history of Masssly/wird-al-latif was merged in, and that repository is to be archived.
+- 2026-10-17 · Website light theme: **white** background (was parchment). The PDF keeps its own colours; dark mode is unchanged.

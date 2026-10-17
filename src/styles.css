@@ -67,26 +67,25 @@
 
 :root {
   --radius: 0.875rem;
-  /* parchment, as in the edition 1.0 PDF */
-  --background: oklch(0.982 0.011 85);
+  --background: oklch(1 0 0);
   --foreground: oklch(0.22 0.012 80);
   --ink: oklch(0.16 0.015 80);
-  --card: oklch(0.995 0.006 85);
+  --card: oklch(1 0 0);
   --card-foreground: var(--foreground);
   --popover: var(--card);
   --popover-foreground: var(--foreground);
   --primary: oklch(0.48 0.09 80); /* gold #7a5c14 */
-  --primary-foreground: oklch(0.982 0.011 85);
-  --secondary: oklch(0.94 0.025 85); /* #f1ead6 */
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.965 0.004 85);
   --secondary-foreground: oklch(0.32 0.04 80);
-  --muted: oklch(0.95 0.018 85);
-  --muted-foreground: oklch(0.5 0.025 80);
-  --accent: oklch(0.94 0.025 85);
+  --muted: oklch(0.97 0.003 85);
+  --muted-foreground: oklch(0.5 0.01 80);
+  --accent: oklch(0.965 0.004 85);
   --accent-foreground: oklch(0.32 0.04 80);
   --destructive: oklch(0.52 0.18 25);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.89 0.022 85);
-  --input: oklch(0.89 0.022 85);
+  --border: oklch(0.91 0.005 85);
+  --input: oklch(0.91 0.005 85);
   --ring: oklch(0.6 0.09 80);
 
   --gold: oklch(0.48 0.09 80);
@@ -182,12 +181,6 @@
 }
 @utility pt-safe {
   padding-top: env(safe-area-inset-top);
-}
-
-@utility paper-grain {
-  background-image:
-    radial-gradient(circle at 20% 0%, color-mix(in oklab, var(--sun) 35%, transparent), transparent 55%),
-    radial-gradient(circle at 100% 30%, color-mix(in oklab, var(--moon) 45%, transparent), transparent 50%);
 }
 
 @keyframes pop {

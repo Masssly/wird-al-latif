@@ -4,7 +4,7 @@ __pycache__/
 .pytest_cache/
 build/
 
-# Web build (Lovable template)
+# Web build
 logs
 *.log
 npm-debug.log*
