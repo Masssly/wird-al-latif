@@ -50,6 +50,7 @@ Don't hard-code wird text in pages or components; read it from the data. Don't a
 - **Never rewrite published history:** no force-push, and no rebasing, amending or squashing of pushed commits.
 - Keep the default branch working: `python3 -m pytest -q` and `bunx vitest run` must pass.
 - `tests/test_pdf_regression.py` compares the PDF glyph for glyph with `tests/baseline/`. If a change alters the PDF on purpose, regenerate the baseline in the same commit and say why.
+- The site is published by `.github/workflows/pages.yml` on every push to `main`. Its links and asset paths must respect the base path: use the router's `<Link>` and `import.meta.env.BASE_URL`, never a hard-coded `/…` URL.
 - **No LICENSE file** until the owner confirms the licences. Don't add a licence or a licence badge.
 
 ## Build and test
@@ -58,6 +59,7 @@ Don't hard-code wird text in pages or components; read it from the data. Don't a
 bun install
 bun scripts/build-wird-data.ts    # after changing data/ or i18n/
 bun run dev                       # or: bun run build
+STATIC_SITE=1 BASE_PATH=/wird-al-latif/ bunx vite build   # the static GitHub Pages build → dist/client/
 bunx vitest run
 
 # PDF and data checks

@@ -28,6 +28,16 @@ python3 pdf/build.py                # → build/al-Wird-al-Latif.pdf
 python3 -m pytest -q                # data checks + glyph-level comparison with tests/baseline/
 ```
 
+## Publishing
+
+`.github/workflows/pages.yml` runs on every push to `main`. It runs both test suites, builds the PDF and the static site, and publishes them to GitHub Pages. The PDF is at `al-Wird-al-Latif.pdf` on the site. Pull requests get the same tests and builds, without the deploy.
+
+To build the static site locally, as the workflow does:
+
+```sh
+STATIC_SITE=1 BASE_PATH=/wird-al-latif/ bunx vite build   # → dist/client/
+```
+
 ## Layout
 
 | Path | What |
