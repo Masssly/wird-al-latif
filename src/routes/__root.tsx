@@ -14,6 +14,9 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { useOnline } from "../lib/reader-state";
 
+// "/" in Lovable and locally; "/wird-al-latif/" on GitHub Pages (see vite.config.ts).
+const BASE = import.meta.env.BASE_URL;
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -63,7 +66,7 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
             Try again
           </button>
           <a
-            href="/"
+            href={BASE}
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
             Go home
@@ -84,8 +87,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
-      { rel: "preload", href: "/fonts/hafs.18.ttf", as: "font", type: "font/ttf", crossOrigin: "anonymous" },
+      { rel: "icon", href: `${BASE}favicon.ico`, type: "image/x-icon" },
+      { rel: "preload", href: `${BASE}fonts/hafs.18.ttf`, as: "font", type: "font/ttf", crossOrigin: "anonymous" },
     ],
   }),
   shellComponent: RootShell,
@@ -125,7 +128,7 @@ function RootComponent() {
       navigator.serviceWorker.getRegistrations().then((rs) => rs.forEach((r) => r.unregister()));
       return;
     }
-    navigator.serviceWorker.register("/sw.js").catch(() => {});
+    navigator.serviceWorker.register(`${BASE}sw.js`, { scope: BASE }).catch(() => {});
   }, []);
 
   return (
