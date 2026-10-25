@@ -21,7 +21,10 @@ export const Route = createFileRoute("/$lang")({
           content: `Read al-Wird al-Laṭīf of Imām al-Ḥaddād morning and evening: vowelled Arabic, transliteration and ${name} meanings.`,
         },
         { property: "og:title", content: `al-Wird al-Laṭīf — ${name}` },
-        { property: "og:description", content: `Morning and evening litany of Imām al-Ḥaddād with ${name} meanings.` },
+        {
+          property: "og:description",
+          content: `Morning and evening litany of Imām al-Ḥaddād with ${name} meanings.`,
+        },
         { property: "og:type", content: "article" },
         { name: "twitter:card", content: "summary" },
       ],
@@ -40,6 +43,16 @@ function Reader() {
   const { counts, tap, reset } = useProgress(when);
   const [open, setOpen] = useState(false);
 
+  // The language being read, plus any others the reader chose to mix in. Never filled in
+  // automatically: a language with no meaning for an item just shows nothing for it.
+  const meaningLangs = useMemo(
+    () =>
+      settings.meaning
+        ? [code, ...settings.meaningLangs.filter((c) => c !== code && isLang(c))]
+        : [],
+    [settings.meaning, settings.meaningLangs, code],
+  );
+
   const numbered = useMemo(() => {
     let n = 0;
     return WIRD.sections.map((s) => ({ ...s, items: s.items.map((it) => ({ it, n: ++n })) }));
@@ -54,11 +67,19 @@ function Reader() {
     <div className="reader min-h-dvh bg-background" data-size={settings.size}>
       <header className="sticky top-0 z-20 border-b border-border bg-background/90 pt-safe backdrop-blur">
         <div className="mx-auto flex h-14 max-w-2xl items-center gap-2 px-3">
-          <Link to="/" className="-ml-1 flex size-11 items-center justify-center rounded-full" aria-label="Home">
+          <Link
+            to="/"
+            className="-ml-1 flex size-11 items-center justify-center rounded-full"
+            aria-label="Home"
+          >
             <ChevronLeft className="size-5" />
           </Link>
           <div className="min-w-0 flex-1">
-            <p lang="ar" dir="rtl" className="truncate text-left font-dua text-lg leading-tight text-ink">
+            <p
+              lang="ar"
+              dir="rtl"
+              className="truncate text-left font-dua text-lg leading-tight text-ink"
+            >
               {WIRD.title}
             </p>
             <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
@@ -74,16 +95,26 @@ function Reader() {
             <Settings2 className="size-5" />
           </button>
         </div>
-        <div className="h-1 bg-muted" role="progressbar" aria-valuemin={0} aria-valuemax={total} aria-valuenow={done}>
-          <div className="h-full bg-primary transition-all" style={{ width: `${(done / total) * 100}%` }} />
+        <div
+          className="h-1 bg-muted"
+          role="progressbar"
+          aria-valuemin={0}
+          aria-valuemax={total}
+          aria-valuenow={done}
+        >
+          <div
+            className="h-full bg-primary transition-all"
+            style={{ width: `${(done / total) * 100}%` }}
+          />
         </div>
       </header>
 
       <main className="mx-auto max-w-2xl px-4 pb-32">
         {lang.meta.lang !== "en" && Object.keys(lang.items).length === 0 && (
           <p className="mt-4 rounded-xl bg-secondary p-3 text-sm text-secondary-foreground">
-            The Qurʾān passages are shown in {lang.meta.name}. The duʿā meanings are not yet translated, so they appear in
-            English.
+            The Qurʾān passages are shown in {lang.meta.name}; the duʿā meanings are not yet
+            translated, so they are left out here. Add English, or another language, in Reading
+            settings to see them alongside {lang.meta.name}.
           </p>
         )}
         {numbered.map((sec, k) => {
@@ -91,8 +122,13 @@ function Reader() {
           return (
             <section key={sec.id} aria-labelledby={`sec-${sec.id}`} className="pt-6">
               <div className="rounded-2xl bg-secondary px-4 py-3">
-                <p className="text-[0.7rem] font-bold uppercase tracking-widest text-gold">Part {k + 1}</p>
-                <h2 id={`sec-${sec.id}`} className="font-serif text-xl font-bold text-secondary-foreground">
+                <p className="text-[0.7rem] font-bold uppercase tracking-widest text-gold">
+                  Part {k + 1}
+                </p>
+                <h2
+                  id={`sec-${sec.id}`}
+                  className="font-serif text-xl font-bold text-secondary-foreground"
+                >
                   {t?.title}
                 </h2>
                 {t?.description && <p className="text-sm text-muted-foreground">{t.description}</p>}
@@ -108,7 +144,7 @@ function Reader() {
                   count={counts[it.id] ?? 0}
                   onTap={() => tap(it.id, it.repeat)}
                   showTranslit={settings.translit}
-                  showMeaning={settings.meaning}
+                  meaningLangs={meaningLangs}
                 />
               ))}
             </section>
@@ -152,13 +188,23 @@ function Reader() {
             >
               {w === "morning" ? <Sun className="size-4" /> : <Moon className="size-4" />}
               {w === "morning" ? "Morning" : "Evening"}
-              {when === w && <span className="font-normal opacity-75">· {done}/{total}</span>}
+              {when === w && (
+                <span className="font-normal opacity-75">
+                  · {done}/{total}
+                </span>
+              )}
             </button>
           ))}
         </div>
       </nav>
 
-      <ReaderSettings open={open} onOpenChange={setOpen} settings={settings} update={update} current={code} />
+      <ReaderSettings
+        open={open}
+        onOpenChange={setOpen}
+        settings={settings}
+        update={update}
+        current={code}
+      />
     </div>
   );
 }
