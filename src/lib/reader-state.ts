@@ -7,8 +7,16 @@ export type Settings = {
   theme: "system" | "light" | "dark";
   translit: boolean;
   meaning: boolean;
+  /** Languages to show the meaning in, besides the one being read. Never filled in automatically. */
+  meaningLangs: string[];
 };
-const DEFAULTS: Settings = { size: 1, theme: "system", translit: true, meaning: true };
+const DEFAULTS: Settings = {
+  size: 1,
+  theme: "system",
+  translit: true,
+  meaning: true,
+  meaningLangs: [],
+};
 const KEY = "wird:settings";
 
 function load<T>(key: string, fallback: T): T {
@@ -22,7 +30,8 @@ function load<T>(key: string, fallback: T): T {
 
 export function applyTheme(theme: Settings["theme"]) {
   const dark =
-    theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    theme === "dark" ||
+    (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
   document.documentElement.classList.toggle("dark", dark);
 }
 

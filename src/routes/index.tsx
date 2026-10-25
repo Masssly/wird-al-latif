@@ -15,7 +15,8 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "al-Wird al-Laṭīf — open edition" },
       {
         property: "og:description",
-        content: "The morning and evening litany of Imām al-Ḥaddād, free and readable on any phone.",
+        content:
+          "The morning and evening litany of Imām al-Ḥaddād, free and readable on any phone.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -59,7 +60,9 @@ function Home() {
                     <span className="flex-1">
                       <span className="block font-semibold">{m.native_name}</span>
                       <span className="block text-xs text-muted-foreground">
-                        {c === "en" ? "Qurʾān and duʿā meanings" : "Qurʾān meanings · duʿās in English for now"}
+                        {c === "en"
+                          ? "Qurʾān and duʿā meanings"
+                          : "Qurʾān meanings · duʿās not yet translated"}
                       </span>
                     </span>
                     <StatusBadge status={m.status} />
@@ -70,8 +73,8 @@ function Home() {
             })}
           </ul>
           <p className="mt-4 rounded-xl bg-secondary p-3 text-xs text-secondary-foreground">
-            This edition is still being proofread. The duʿā Arabic and the Hausa and Dagbanli texts have not yet been
-            checked by a qualified reader.
+            This edition is still being proofread. The duʿā Arabic and the Hausa and Dagbanli texts
+            have not yet been checked by a qualified reader.
           </p>
         </section>
 
@@ -82,7 +85,10 @@ function Home() {
           <Link to="/sources" className="min-h-11 content-center">
             Sources
           </Link>
-          <span className="inline-flex min-h-11 items-center gap-1 text-muted-foreground" title="Coming soon">
+          <span
+            className="inline-flex min-h-11 items-center gap-1 text-muted-foreground"
+            title="Coming soon"
+          >
             <Download className="size-4" /> PDFs soon
           </span>
         </nav>
