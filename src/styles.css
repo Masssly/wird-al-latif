@@ -144,6 +144,28 @@
   }
 }
 
+/* Printing: always the light theme (dark mode wastes ink), with the
+ * morning/evening highlight backgrounds kept (browsers drop background
+ * colours by default when printing). The reader page itself hides its
+ * interactive chrome with print: utilities — see $lang.tsx. */
+@media print {
+  * {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  :root,
+  .dark {
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.22 0.012 80);
+    --card: oklch(1 0 0);
+    --muted-foreground: oklch(0.5 0.025 80);
+    --border: oklch(0.89 0.022 85);
+  }
+  .reader article {
+    break-inside: avoid;
+  }
+}
+
 /* Reader text sizes, driven by data-size on the reader root (0..4). */
 .reader {
   --ar: 1.6rem;

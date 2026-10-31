@@ -3,6 +3,9 @@ __pycache__/
 *.pyc
 .pytest_cache/
 build/
+# The built PDF is copied into public/ before the site build so the home
+# page can link it (see pages.yml); never commit that copy.
+/public/al-Wird-al-Latif.pdf
 
 # Web build
 logs

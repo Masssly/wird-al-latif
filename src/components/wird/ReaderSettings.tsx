@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { Printer } from "lucide-react";
 import { Drawer } from "vaul";
 import type { Settings } from "@/lib/reader-state";
 import { getLang, LANG_ORDER } from "@/lib/wird";
@@ -109,6 +110,25 @@ export function ReaderSettings({ open, onOpenChange, settings, update, current }
 
             <Group label="Colours">
               <Legend />
+            </Group>
+
+            <Group label="Print or save as PDF">
+              <p className="mb-2 text-xs text-muted-foreground">
+                Uses exactly what's shown above: text size, transliteration, and whichever
+                languages' meanings are on. There's no separate print version to keep in sync.
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  onOpenChange(false);
+                  // Let the sheet finish closing so it isn't what gets printed.
+                  setTimeout(() => window.print(), 300);
+                }}
+                className="flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-primary text-sm font-semibold text-primary-foreground"
+              >
+                <Printer className="size-4" /> Print this {getLang(current).meta.native_name}{" "}
+                reading
+              </button>
             </Group>
             <div className="h-6" />
           </div>

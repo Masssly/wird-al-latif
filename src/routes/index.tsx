@@ -85,12 +85,12 @@ function Home() {
           <Link to="/sources" className="min-h-11 content-center">
             Sources
           </Link>
-          <span
-            className="inline-flex min-h-11 items-center gap-1 text-muted-foreground"
-            title="Coming soon"
+          <a
+            href={`${import.meta.env.BASE_URL}al-Wird-al-Latif.pdf`}
+            className="inline-flex min-h-11 items-center gap-1"
           >
-            <Download className="size-4" /> PDFs soon
-          </span>
+            <Download className="size-4" /> Printed edition (PDF)
+          </a>
         </nav>
         <p className="pb-2 text-center text-xs text-muted-foreground">
           Compiled by {COMPILER} · Edition {WIRD.edition}

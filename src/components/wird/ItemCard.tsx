@@ -81,7 +81,7 @@ export function ItemCard({
               ? "Done, tap to undo"
               : "Mark as said"
         }
-        className={`mt-4 flex min-h-11 w-full items-center justify-center gap-2 rounded-full border text-sm font-semibold transition-colors active:scale-[0.98] ${
+        className={`mt-4 flex min-h-11 w-full items-center justify-center gap-2 rounded-full border text-sm font-semibold transition-colors active:scale-[0.98] print:hidden ${
           done
             ? "border-transparent bg-primary text-primary-foreground"
             : "border-border bg-card text-secondary-foreground"
@@ -105,6 +105,13 @@ export function ItemCard({
           "Said once · tap when done"
         )}
       </button>
+      {/* The tap counter is a reading aid, not printable content — print the repeat count as
+          plain text instead, since there's nothing to tap on paper. */}
+      {item.repeat > 1 && (
+        <p className="mt-4 hidden text-sm font-semibold text-muted-foreground print:block">
+          Repeat {item.repeat}×
+        </p>
+      )}
     </article>
   );
 }
