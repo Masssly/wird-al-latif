@@ -1,14 +1,15 @@
-# German.  So far only the Qurʾān translation (third-party, used verbatim; not
-# copied here).  Duʿā meanings in German are still to be written (status draft).
+# German.  Qurʾān translation is third-party, used verbatim, not copied here.
+# Duʿā meanings are new translations made for this edition, AI-assisted and not
+# yet checked by a qualified German-speaking reviewer (see REVIEW.md).
 
 meta:
   lang: de
   name: German
   native_name: Deutsch
   status: reviewed
-  translator: null
+  translator: "Mohammed Sadat Abdulai (AI-assisted)"
   reviewers: []
-  source: "Qurʾān: Frank Bubenheim and Nadeem Elyas via QuranEnc; duʿās not yet translated"
+  source: "Qurʾān: Frank Bubenheim and Nadeem Elyas via QuranEnc; duʿās newly translated for this edition"
   licence: "proposed CC BY-SA 4.0 for new material (not yet confirmed)"
   version: "1.0"
 
@@ -22,4 +23,70 @@ quran:
 ui:
   label: DE
 
-items: {}
+items:
+  taawwudh: "Ich suche Zuflucht bei Allah, dem Allhörenden, dem Allwissenden, vor dem verstoßenen Satan."
+  kalimat-tammat: "Ich suche Zuflucht in den vollkommenen Worten Allahs vor dem Übel dessen, was er erschaffen hat."
+  bismillah-la-yadurr: "Im Namen Allahs, mit dessen Namen nichts auf der Erde und nichts im Himmel schaden kann, und er ist der Allhörende, der Allwissende."
+  nima-afiya-sitr:
+    - "O Allah, ich habe "
+    - {morning: "den Morgen", evening: "den Abend"}
+    - " erreicht, in Gnade, Wohlergehen und Schutz von dir. Vollende daher deine Gnade, dein Wohlergehen und deinen Schutz an mir, in diesem Leben und im Jenseits."
+  ushhiduka:
+    - "O Allah, ich habe "
+    - {morning: "den Morgen", evening: "den Abend"}
+    - " erreicht, wobei ich dich zum Zeugen nehme, und die Träger deines Throns, deine Engel und deine ganze Schöpfung zu Zeugen nehme, dass du Allah bist: Es gibt keinen Gott außer dir, dir allein, ohne Partner, und dass unser Meister Muhammad dein Diener und dein Gesandter ist."
+  hamdan-yuwafi: "Aller Preis gebührt Allah, dem Herrn der Welten — ein Lob, das seinen Gaben entspricht und seiner stets wachsenden Gunst gleichkommt."
+  amantu: "Ich glaube an Allah, den Erhabenen, und ich verwerfe alle Götzen und falschen Götter. Ich halte mich an der festesten Handhabe fest, die niemals zerbricht. Und Allah ist der Allhörende, der Allwissende."
+  raditu: "Ich bin zufrieden mit Allah als meinem Herrn, mit dem Islam als meiner Religion und mit unserem Meister Muhammad — Allahs Segen und Friede seien auf ihm und seiner Familie — als meinem Propheten und Gesandten."
+  hasbiya: "Allah genügt mir; es gibt keinen Gott außer ihm. Auf ihn vertraue ich, und er ist der Herr des gewaltigen Throns."
+  salat-wa-sahbihi: "O Allah, sende Segen und Frieden auf unseren Meister Muhammad, seine Familie und seine Gefährten."
+  fujaat: "O Allah, ich bitte dich um Gutes, das plötzlich eintrifft, und ich suche Zuflucht bei dir vor Bösem, das plötzlich eintrifft."
+  sayyid-al-istighfar: "O Allah, du bist mein Herr; es gibt keinen Gott außer dir. Du hast mich erschaffen, und ich bin dein Diener. Ich halte mein Versprechen und meine Zusage an dich, so gut ich kann. Ich suche Zuflucht bei dir vor dem Übel dessen, was ich getan habe. Ich erkenne deine Gaben an mir an, und ich bekenne meine Sünden — so vergib mir, denn niemand vergibt Sünden außer dir."
+  alayka-tawakkaltu: "O Allah, du bist mein Herr; es gibt keinen Gott außer dir. Auf dich vertraue ich, und du bist der Herr des gewaltigen Throns."
+  ma-shaa-allah: "Was Allah will, geschieht, und was er nicht will, geschieht nicht. Es gibt keine Macht und keine Kraft außer durch Allah, den Erhabenen, den Gewaltigen."
+  alamu: "Ich weiß, dass Allah Macht über alle Dinge hat, und dass Allahs Wissen alle Dinge umfasst."
+  sharri-nafsi: "O Allah, ich suche Zuflucht bei dir vor dem Übel meiner eigenen Seele, und vor dem Übel jedes Lebewesens, dessen Schopf du hältst. Wahrlich, mein Herr ist auf einem geraden Weg."
+  ya-hayyu: "O Immerlebendiger, o Beständiger! Bei deiner Barmherzigkeit rufe ich um Hilfe, und vor deiner Strafe suche ich Schutz. Ordne alle meine Angelegenheiten, und überlasse mich nicht mir selbst, noch irgendeinem deiner Geschöpfe, auch nicht für den Bruchteil eines Augenblicks."
+  hamm-hazan: "O Allah, ich suche Zuflucht bei dir vor Sorge und Trauer; ich suche Zuflucht bei dir vor Hilflosigkeit und Trägheit; ich suche Zuflucht bei dir vor Feigheit und Geiz; und ich suche Zuflucht bei dir davor, von Schulden überwältigt und von Menschen überwunden zu werden."
+  afiya: "O Allah, ich bitte dich um Wohlergehen in diesem Leben und im Jenseits."
+  afw-afiya: "O Allah, ich bitte dich um Verzeihung, Wohlergehen und beständige Sicherheit in meiner Religion, meinem weltlichen Leben, meiner Familie und meinem Besitz."
+  ustur: "O Allah, bedecke meine Fehler und beruhige meine Ängste."
+  ihfazni: "O Allah, beschütze mich von vorne und von hinten, von meiner Rechten und von meiner Linken, und von oben; und ich suche Zuflucht in deiner Größe davor, von unten unversehens heimgesucht zu werden."
+  khalaqtani: "O Allah, du hast mich erschaffen und du leitest mich; du speist mich und du tränkst mich; du lässt mich sterben und du gibst mir Leben; und du hast Macht über alle Dinge."
+  fitrat-al-islam:
+    - "Wir haben "
+    - {morning: "den Morgen", evening: "den Abend"}
+    - " erreicht auf der natürlichen Art des Islam, auf dem Wort des aufrichtigen Glaubens, auf der Religion unseres Propheten Muhammad — Allahs Segen und Friede seien auf ihm und seiner Familie — und auf dem Weg unseres Vaters Ibrāhīm, der aufrecht war, ein Muslim, und nicht einer von denen, die anderen außer Allah dienen."
+  bika-asbahna:
+    - "O Allah, durch dich erreichen wir "
+    - {morning: "den Morgen", evening: "den Abend"}
+    - ", und durch dich erreichen wir "
+    - {morning: "den Abend", evening: "den Morgen"}
+    - "; durch dich leben wir und durch dich sterben wir; auf dich vertrauen wir, und zu dir ist "
+    - {morning: "die Auferstehung", evening: "die endgültige Rückkehr"}
+    - "."
+  al-mulku-lillah:
+    - "Wir haben "
+    - {morning: "den Morgen", evening: "den Abend"}
+    - " erreicht, und die ganze Herrschaft hat "
+    - {morning: "den Morgen", evening: "den Abend"}
+    - " erreicht, und sie gehört Allah. Aller Preis gebührt Allah, dem Herrn der Welten."
+  khayra-hadha-al-yawm:
+    - "O Allah, ich bitte dich um das Gute "
+    - {morning: "dieses Tages: seine Eröffnungen, seinen Sieg, sein Licht, seinen Segen und seine Rechtleitung.", evening: "dieser Nacht: ihre Eröffnungen, ihren Sieg, ihr Licht, ihren Segen und ihre Rechtleitung."}
+  khayra-ma-fih:
+    - "O Allah, ich bitte dich um "
+    - {morning: "das Gute dieses Tages und das Gute dessen, was in ihm ist, das Gute dessen, was vor ihm war, und das Gute dessen, was nach ihm kommt; und ich suche Zuflucht bei dir vor dem Übel dieses Tages und dem Übel dessen, was in ihm ist, dem Übel dessen, was vor ihm war, und dem Übel dessen, was nach ihm kommt.", evening: "das Gute dieser Nacht und das Gute dessen, was in ihr ist, das Gute dessen, was vor ihr war, und das Gute dessen, was nach ihr kommt; und ich suche Zuflucht bei dir vor dem Übel dieser Nacht und dem Übel dessen, was in ihr ist, dem Übel dessen, was vor ihr war, und dem Übel dessen, was nach ihr kommt."}
+  ma-asbaha-bi:
+    - "O Allah, welche Gabe auch immer mir oder irgendeinem deiner Geschöpfe "
+    - {morning: "heute Morgen", evening: "heute Abend"}
+    - " zuteilwurde, sie kommt allein von dir, ohne Partner. Dir allein gebühren dafür aller Preis und aller Dank."
+  subhan-allah-wa-bihamdih: "Gepriesen sei Allah, und Lob sei ihm — so oft wie die Zahl seiner Schöpfung, so viel wie ihm gefällt, so schwer wie sein Thron, und so viel wie die Tinte seiner Worte."
+  subhan-allah-al-azim: "Gepriesen sei Allah, der Gewaltige, und Lob sei ihm — so oft wie die Zahl seiner Schöpfung, so viel wie ihm gefällt, so schwer wie sein Thron, und so viel wie die Tinte seiner Worte."
+  adad-tasbih: "„Gepriesen sei Allah“ so oft wie alles, was er im Himmel erschaffen hat; „Gepriesen sei Allah“ so oft wie alles, was er auf der Erde erschaffen hat; „Gepriesen sei Allah“ so oft wie alles, was zwischen beidem ist; „Gepriesen sei Allah“ so oft wie alles, was er noch erschaffen wird."
+  adad-tahmid: "„Aller Preis gebührt Allah“ so oft wie alles, was er im Himmel erschaffen hat; „Aller Preis gebührt Allah“ so oft wie alles, was er auf der Erde erschaffen hat; „Aller Preis gebührt Allah“ so oft wie alles, was zwischen beidem ist; „Aller Preis gebührt Allah“ so oft wie alles, was er noch erschaffen wird."
+  adad-tahlil: "„Es gibt keinen Gott außer Allah“ so oft wie alles, was er im Himmel erschaffen hat; „Es gibt keinen Gott außer Allah“ so oft wie alles, was er auf der Erde erschaffen hat; „Es gibt keinen Gott außer Allah“ so oft wie alles, was zwischen beidem ist; „Es gibt keinen Gott außer Allah“ so oft wie alles, was er noch erschaffen wird."
+  adad-takbir: "„Allah ist der Größte“ so oft wie alles, was er im Himmel erschaffen hat; „Allah ist der Größte“ so oft wie alles, was er auf der Erde erschaffen hat; „Allah ist der Größte“ so oft wie alles, was zwischen beidem ist; „Allah ist der Größte“ so oft wie alles, was er noch erschaffen wird."
+  adad-hawqala: "„Es gibt keine Macht und keine Kraft außer durch Allah, den Erhabenen, den Gewaltigen“ so oft wie alles, was er im Himmel erschaffen hat; „Es gibt keine Macht und keine Kraft außer durch Allah, den Erhabenen, den Gewaltigen“ so oft wie alles, was er auf der Erde erschaffen hat; „Es gibt keine Macht und keine Kraft außer durch Allah, den Erhabenen, den Gewaltigen“ so oft wie alles, was zwischen beidem ist; „Es gibt keine Macht und keine Kraft außer durch Allah, den Erhabenen, den Gewaltigen“ so oft wie alles, was er noch erschaffen wird."
+  tahlil-dharrah: "Es gibt keinen Gott außer Allah, allein, ohne Partner. Sein ist die Herrschaft, und sein ist der Preis. Er gibt Leben und lässt sterben, und er hat Macht über alle Dinge — so oft wie jedes Atom, tausendfach."
+  salat-miftah: "O Allah, sende Segen und Frieden auf unseren Meister Muhammad, den Schlüssel zur Tür von Allahs Barmherzigkeit — so oft wie alles, was in Allahs Wissen ist — Segen und Frieden, die so lange währen, wie Allahs Herrschaft währt; und auf seine Familie und Gefährten, so oft wie jedes Atom, tausendfach."

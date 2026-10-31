@@ -131,7 +131,10 @@ That colouring has not been reviewed, and the web and PDF disagree until this is
 `src/components/wird/ItemCard.tsx`.
 The quoted end of 9:129 (item 17, `hasbiya`) is KFGQPC text, but the website sets it in Amiri (`font-dua`) like the duʿās, while the PDF uses the Madinah muṣḥaf font.
 
-### R-B2 · German has no duʿā meanings · open
-`i18n/de.yaml` has only the Qurʾān translation.
-A German edition needs German meanings for the 37 duʿās, or a stated fallback to English.
-The same applies to Hausa and Dagbanli.
+### R-B2 · German duʿā meanings are new, AI-assisted and unproofread · open
+`i18n/de.yaml` now has German meanings for all 38 duʿā items (2026-10-31), at the owner's request ("German is a high-resource language and AI is pretty good at it").
+They are a fresh translation from the English meanings, written by Claude and not corrected from any existing published source — no native-speaker or qualified reviewer has checked them.
+`meta.status` is `reviewed` (so the website shows no draft badge for German, matching the owner's decision in #6), but that reflects the *Qurʾān* translation's standing (Bubenheim & Elyas, an established scholarly translation); the new duʿā text itself carries no such standing yet.
+Flagging here per the project's own rule on AI-written religious text, so a German speaker can check it before it's treated as settled. Points worth a second look in particular: "Meister" for *sayyidunā* (chosen over "Herr", which in German usually means God the Lord — a reviewer may prefer another word), and the three-item split in `khayra-hadha-al-yawm`/`khayra-ma-fih`/`ma-asbaha-bi`, where German grammar forces the morning/evening change to span a whole clause instead of one word, unlike the other languages.
+
+Hausa and Dagbanli still have no duʿā meanings at all (not even a draft): their items remain English-only in the reader, per R-L1 below.
