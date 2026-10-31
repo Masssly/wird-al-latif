@@ -21,9 +21,10 @@ def test_ids_and_numbering():
 
 def test_language_files():
     assert set(DATA["langs"]) == {"en", "de", "ha", "dag"}
+    statuses = {"en": "reviewed", "de": "reviewed", "ha": "draft", "dag": "draft"}
     for code, d in DATA["langs"].items():
         assert d["meta"]["lang"] == code
-        assert d["meta"]["status"] == "draft"  # nothing has been reviewed yet
+        assert d["meta"]["status"] == statuses[code]
 
 
 def test_english_covers_every_dua():
@@ -33,15 +34,29 @@ def test_english_covers_every_dua():
         assert (it["id"] in en) == (not q or bool(q.get("quote"))), it["id"]
 
 
+def test_german_covers_every_dua():
+    """German duʿā meanings are complete too (unlike Hausa/Dagbanli, which have none yet)."""
+    de = DATA["langs"]["de"]["items"]
+    for _, it in items(DATA):
+        q = it.get("quran")
+        assert (it["id"] in de) == (not q or bool(q.get("quote"))), it["id"]
+
+
 def test_variants_line_up():
     """An item that changes in the evening changes in the Arabic, the
-    transliteration and the meaning alike."""
-    en, tl = DATA["langs"]["en"]["items"], DATA["translit"]["items"]
+    transliteration and every complete meaning alike. German may split the
+    variant differently from English (German grammar needs it; see
+    i18n/de.yaml), so this only checks that a variant exists somewhere, not
+    that the segments line up word for word."""
+    en, de, tl = DATA["langs"]["en"]["items"], DATA["langs"]["de"]["items"], DATA["translit"]["items"]
+    n = lambda v: sum(isinstance(s, dict) for s in v) if isinstance(v, list) else 0
     for _, it in items(DATA):
         if "arabic" not in it:
             continue
-        n = lambda v: sum(isinstance(s, dict) for s in v) if isinstance(v, list) else 0
-        assert (n(it["arabic"]) > 0) == (n(tl[it["id"]]) > 0) == (n(en[it["id"]]) > 0), it["id"]
+        has_variant = n(it["arabic"]) > 0
+        assert has_variant == (n(tl[it["id"]]) > 0) == (n(en[it["id"]]) > 0), it["id"]
+        if it["id"] in de:
+            assert has_variant == (n(de[it["id"]]) > 0), it["id"]
 
 
 def test_render():
