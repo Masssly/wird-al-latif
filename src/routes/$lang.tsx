@@ -65,11 +65,11 @@ function Reader() {
 
   return (
     <div className="reader min-h-dvh bg-background" data-size={settings.size}>
-      <header className="sticky top-0 z-20 border-b border-border bg-background/90 pt-safe backdrop-blur">
-        <div className="mx-auto flex h-14 max-w-2xl items-center gap-2 px-3">
+      <header className="sticky top-0 z-20 border-b border-border bg-background/90 pt-safe backdrop-blur print:static print:border-none print:bg-transparent">
+        <div className="mx-auto flex h-14 max-w-2xl items-center gap-2 px-3 print:h-auto print:px-0 print:py-2">
           <Link
             to="/"
-            className="-ml-1 flex size-11 items-center justify-center rounded-full"
+            className="-ml-1 flex size-11 items-center justify-center rounded-full print:hidden"
             aria-label="Home"
           >
             <ChevronLeft className="size-5" />
@@ -84,19 +84,29 @@ function Reader() {
             </p>
             <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
               {lang.meta.native_name} <StatusBadge status={lang.meta.status} />
+              <span className="hidden print:inline">
+                · {when === "morning" ? "Morning" : "Evening"}
+              </span>
+            </p>
+            {/* What this particular printed copy contains — there's no single "the" PDF; the
+                combination of layers is whatever Reading settings had turned on. */}
+            <p className="hidden text-xs text-muted-foreground print:block">
+              Arabic{settings.translit && " · transliteration"}
+              {meaningLangs.length > 0 &&
+                ` · meaning: ${meaningLangs.map((c) => getLang(c).meta.native_name).join(", ")}`}
             </p>
           </div>
           <button
             type="button"
             onClick={() => setOpen(true)}
-            className="flex size-11 items-center justify-center rounded-full"
+            className="flex size-11 items-center justify-center rounded-full print:hidden"
             aria-label="Reading settings"
           >
             <Settings2 className="size-5" />
           </button>
         </div>
         <div
-          className="h-1 bg-muted"
+          className="h-1 bg-muted print:hidden"
           role="progressbar"
           aria-valuemin={0}
           aria-valuemax={total}
@@ -109,9 +119,9 @@ function Reader() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-2xl px-4 pb-32">
+      <main className="mx-auto max-w-2xl px-4 pb-32 print:pb-0">
         {lang.meta.lang !== "en" && Object.keys(lang.items).length === 0 && (
-          <p className="mt-4 rounded-xl bg-secondary p-3 text-sm text-secondary-foreground">
+          <p className="mt-4 rounded-xl bg-secondary p-3 text-sm text-secondary-foreground print:hidden">
             The Qurʾān passages are shown in {lang.meta.name}; the duʿā meanings are not yet
             translated, so they are left out here. Add English, or another language, in Reading
             settings to see them alongside {lang.meta.name}.
@@ -150,7 +160,7 @@ function Reader() {
             </section>
           );
         })}
-        <div className="py-10 text-center">
+        <div className="py-10 text-center print:hidden">
           <p className="font-serif text-lg text-gold">
             {done === total ? "The wird is complete." : `${done} of ${total} lines said`}
           </p>
@@ -165,7 +175,7 @@ function Reader() {
       </main>
 
       {/* Morning / evening switch within thumb reach */}
-      <nav className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-background/95 px-4 pt-2 pb-safe backdrop-blur">
+      <nav className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-background/95 px-4 pt-2 pb-safe backdrop-blur print:hidden">
         <div
           role="radiogroup"
           aria-label="Time of day"

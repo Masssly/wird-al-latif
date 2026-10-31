@@ -15,7 +15,18 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
     ...(STATIC && {
-      prerender: { enabled: true, crawlLinks: true, failOnError: true },
+      prerender: {
+        enabled: true,
+        crawlLinks: true,
+        failOnError: true,
+        // The crawler fetches every same-origin link it finds and writes the response
+        // back to disk as a "page" — fine for routes, but for a real static file (the
+        // PDF link on the home page) it reads the binary response as text and
+        // overwrites the file with a corrupted copy. Every route here is extension-less,
+        // so skip any crawled link that has one; it's an existing static asset already
+        // in public/, not a route to prerender.
+        filter: (page: { path: string }) => !/\.\w+$/.test(page.path),
+      },
     }),
   },
   ...(STATIC && {

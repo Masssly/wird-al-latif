@@ -57,6 +57,12 @@ jobs:
       - name: Build the PDF
         run: python pdf/build.py
 
+      - name: Add the PDF to the site
+        # Into public/, before the build: the home page links it directly, and the
+        # prerender crawler (STATIC_SITE below) follows that link and needs the file
+        # to already exist on disk, not just copied in afterwards.
+        run: cp build/al-Wird-al-Latif.pdf public/al-Wird-al-Latif.pdf
+
       - name: Pages settings
         id: pages
         if: github.event_name != 'pull_request'
@@ -68,9 +74,6 @@ jobs:
           # "/wird-al-latif" on github.io, "" with a custom domain.
           BASE_PATH: ${{ steps.pages.outputs.base_path }}/
         run: bunx vite build
-
-      - name: Add the PDF to the site
-        run: cp build/al-Wird-al-Latif.pdf dist/client/al-Wird-al-Latif.pdf
 
       - uses: actions/upload-pages-artifact@v3
         if: github.event_name != 'pull_request'
