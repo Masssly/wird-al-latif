@@ -80,10 +80,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
       { name: "theme-color", content: "#ffffff" },
       { name: "author", content: "Mohammed Sadat Abdulai" },
+      // Home-screen install on iOS reads these, not the manifest below.
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "default" },
+      { name: "apple-mobile-web-app-title", content: "Wird al-Laṭīf" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: `${BASE}favicon.ico`, type: "image/x-icon" },
+      { rel: "apple-touch-icon", href: `${BASE}apple-touch-icon.png` },
+      { rel: "manifest", href: `${BASE}site.webmanifest` },
       {
         rel: "preload",
         href: `${BASE}fonts/hafs.18.ttf`,
