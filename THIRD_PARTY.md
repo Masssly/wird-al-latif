@@ -47,6 +47,7 @@ included because nothing reads them; they are on the mirror.
 - Typed by eye by Mohammed Sadat Abdulai from the printed pages (page numbers are in each file). These are **unproofread** (REVIEW.md R-T1, R-T2).
 - The text belongs to the King Fahd Complex. **Redistribution terms have not been confirmed**; ask KFGQPC/QuranEnc before publishing widely.
 - Both are also published online by QuranEnc: `hausa_gummi` (v1.2.2) and `dagbani_ghatubo`. The Dagbanli one is served by the API but is missing from the QuranEnc translations index as of 2026-10-14. The online texts are a different revision from the print (see REVIEW.md), so they were not substituted.
+- **The full `dagbani_ghatubo` translation (all 114 surahs) now lives separately**, in [`masssly/dagbanli-quran-text`](https://github.com/Masssly/dagbanli-quran-text) — fetched directly from QuranEnc's API, not re-typed from print, under QuranEnc's own stated redistribution terms (see that repo's `THIRD_PARTY.md` for the exact terms and compliance notes). It's kept there rather than merged into this file because it's a different channel (QuranEnc's online API, not the King Fahd print scan) with its own, actually-confirmed terms — unlike the 31-verse print excerpt above, whose redistribution terms are still unconfirmed. It does **not** resolve R-T2 below; if anything it gives that review a second source to diff against.
 
 ## Duʿā Arabic, transliteration and evening wording: provenance unresolved
 

@@ -63,7 +63,7 @@ Others may be typing slips: 112:2 *bukata*, 114:1 *neman*/*mutane*, 59:23 *tĩla
 Typed by eye from the archive.org scan of the King Fahd Complex print.
 Check every verse against the scan (page numbers are in the file), ideally with a native speaker.
 
-QuranEnc publishes it online as `dagbani_ghatubo`. Its text sometimes uses Greek ε (U+03B5) for ɛ; that was ignored in the comparison.
+QuranEnc publishes it online as `dagbani_ghatubo`. Its text sometimes uses Greek ε (U+03B5) for ɛ; that was ignored in the comparison. The full online edition (all 114 surahs) is now archived verbatim at [`masssly/dagbanli-quran-text`](https://github.com/Masssly/dagbanli-quran-text) (`raw/<surah>.json`) if a wider comparison than this file's handful of verses is ever wanted — that repo doesn't settle this review item, it's just a second, complete copy to diff against the print scan.
 Large differences, for example 30:17–18, 113:5 and 59:23–24, suggest the online text is a revised translation.
 Small ones may be typing slips, for example 59:22 *Nambɔnaa*, where the basmala has *Nambɔzobonaa*.
 **Check against the print.**
