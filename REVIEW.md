@@ -116,6 +116,15 @@ Options:
 ### R-L1 · Redistribution of the Hausa and Dagbanli translations · open
 Ask KFGQPC or QuranEnc whether the transcribed text may be redistributed on a public website and in PDFs (THIRD_PARTY.md).
 
+### R-L2 · Qurʾān recitation audio: no cleared source found yet · open
+Owner asked (2026-11-05) for audio of the reading; AI-generated recitation was ruled out (tajweed accuracy is a religious matter an AI voice can't be trusted to get right, and `docs/DATA.md`'s `audio` schema — `{file, reciter, licence, start, end}` — was built around a credited human reciter in the first place). Looked for a real, clearly-licensed recitation instead; nothing found yet clears the bar this project already holds everything else to (see R-L1, THIRD_PARTY.md):
+- **EveryAyah.com / quran.com-sourced per-ayah audio:** no site-wide licence; attribution-and-link-back is the only explicit term found, and at least one reciter's own files are marked "licence: unknown". Attribution isn't redistribution permission.
+- **Quran Foundation / quran.com API:** developer terms explicitly class audio as "QF content"; redistributing it (hosting our own copies, as this project does with KFGQPC and QuranEnc) needs a separate signed commercial licence, not just API use.
+- **QuranicAudio.com:** personal-use grant only, not a redistribution licence.
+- **AQQD (CC0 qira'at dataset):** the one source with a genuinely open licence, but it's a research corpus of representative-verse, multi-qira'at segments across 300+ reciters for recitation-verification research, not a clean continuous Ḥafṣ recitation of whole ayat — wrong fit for a devotional reading, licence aside, and unconfirmed whether it even covers the wird's specific ranges (112:1-4, 113:1-5, 114:1-6, 23:97-98, 23:115-118, 30:17-19, 59:21-24, 37:79-81, 9:129).
+
+Next step, matching R-L1's pattern: ask a specific reciter or org (EveryAyah, Quran Foundation, or another) for explicit permission to self-host, rather than assume attribution is enough. The duʿā portions (not Qurʾān) have no tajweed concern and could instead be read by a human volunteer, possibly the owner.
+
 ## Bugs in the edition 1.0 build (kept for now so the PDF reproduces exactly)
 
 ### R-B1 · Grey "silent letters" are never shown · open
