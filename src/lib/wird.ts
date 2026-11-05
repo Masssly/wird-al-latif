@@ -5,6 +5,13 @@ export type Text = string | Seg[];
 export type When = "morning" | "evening";
 
 export type Verse = { key: string; aya: number; ar: string };
+export type Audio = {
+  file: string;
+  reciter: string;
+  licence: string;
+  start?: number;
+  end?: number;
+};
 export type Item = {
   id: string;
   repeat: number;
@@ -14,6 +21,7 @@ export type Item = {
   sura?: number;
   basmala?: boolean;
   verses?: Verse[];
+  audio?: Audio;
 };
 export type Section = { id: string; items: Item[] };
 export type LangMeta = {
@@ -71,7 +79,9 @@ export const allItems = () => WIRD.sections.flatMap((s) => s.items);
 /** Flatten a text field for one time of day; `changed` marks the morning/evening words. */
 export function segments(text: Text, when: When): { t: string; changed: boolean }[] {
   if (typeof text === "string") return [{ t: text, changed: false }];
-  return text.map((s) => (typeof s === "string" ? { t: s, changed: false } : { t: s[when], changed: true }));
+  return text.map((s) =>
+    typeof s === "string" ? { t: s, changed: false } : { t: s[when], changed: true },
+  );
 }
 
 export const hasVariants = (text?: Text) =>
@@ -92,13 +102,20 @@ export function defaultWhen(d = new Date()): When {
 export type Tok = { t: string; c?: "allah" | "nabi" | "silent" };
 
 const ZWJ = "\u200d";
-const SUN = new Set("\u062a\u062b\u062f\u0630\u0631\u0632\u0633\u0634\u0635\u0636\u0637\u0638\u0644\u0646");
-const RIGHT_ONLY = new Set("\u0627\u0623\u0625\u0622\u0671\u062f\u0630\u0631\u0632\u0648\u0624\u0629\u0621");
+const SUN = new Set(
+  "\u062a\u062b\u062f\u0630\u0631\u0632\u0633\u0634\u0635\u0636\u0637\u0638\u0644\u0646",
+);
+const RIGHT_ONLY = new Set(
+  "\u0627\u0623\u0625\u0622\u0671\u062f\u0630\u0631\u0632\u0648\u0624\u0629\u0621",
+);
 const AR_WORD = /[\u0621-\u0670\u065f-\u06dc\u06df-\u06ed]+/g;
 const MN = /\p{Mn}/u;
 
 const baseForm = (w: string) =>
-  [...w].filter((c) => !MN.test(c)).map((c) => (c === "\u0671" ? "\u0627" : c)).join("");
+  [...w]
+    .filter((c) => !MN.test(c))
+    .map((c) => (c === "\u0671" ? "\u0627" : c))
+    .join("");
 
 function clusters(w: string) {
   const cl: string[] = [];
@@ -116,7 +133,13 @@ function colourWord(w: string, uthmani: boolean): Tok[] {
   const cl = clusters(w);
   const silent = cl.map((c, i) => {
     let s = false;
-    if (c === "\u0644" && i + 1 < cl.length && SUN.has(cl[i + 1]![0]!) && cl[i + 1]!.includes("\u0651")) s = true;
+    if (
+      c === "\u0644" &&
+      i + 1 < cl.length &&
+      SUN.has(cl[i + 1]![0]!) &&
+      cl[i + 1]!.includes("\u0651")
+    )
+      s = true;
     if (uthmani && c.includes("\u0652")) s = true;
     return s;
   });
@@ -147,7 +170,8 @@ function splitBy(s: string, rx: RegExp, fn: (m: string) => Tok[]): Tok[] {
   return out;
 }
 
-export const colourArabic = (s: string, uthmani: boolean) => splitBy(s, AR_WORD, (w) => colourWord(w, uthmani));
+export const colourArabic = (s: string, uthmani: boolean) =>
+  splitBy(s, AR_WORD, (w) => colourWord(w, uthmani));
 
 const TR_ALLAH = /[\p{L}\p{N}_ʾʿ-]*llāh[\p{L}\p{N}_ʾʿ]*/gu;
 const TR_NABI = /Muḥammad[\p{L}]*/gu;

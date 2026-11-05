@@ -142,6 +142,20 @@ function LangPill({ children }: { children: string }) {
   );
 }
 
+/** Minimal player for an item's recitation. A test feature: one item only, for now. */
+function AudioPlayer({ audio }: { audio: NonNullable<Item["audio"]> }) {
+  const BASE = import.meta.env.BASE_URL;
+  return (
+    <div className="mt-2">
+      <audio controls preload="none" className="h-9 w-full" src={`${BASE}${audio.file}`}>
+        Your browser can't play this audio; here's the file anyway:{" "}
+        <a href={`${BASE}${audio.file}`}>{audio.file}</a>.
+      </audio>
+      <p className="mt-1 text-xs text-muted-foreground">Recited by {audio.reciter}</p>
+    </div>
+  );
+}
+
 function QuranBody({
   item,
   showTranslit,
@@ -166,6 +180,7 @@ function QuranBody({
           </span>
         ))}
       </p>
+      {item.audio && <AudioPlayer audio={item.audio} />}
       {showTranslit && (
         <p lang="ar-Latn" className="text-lat mt-2 italic text-foreground/85">
           {item.basmala && (
