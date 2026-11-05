@@ -21,6 +21,10 @@ sections:
         quran:
           verses: "112:1-4"
           basmala: true
+        audio:
+          file: audio/ikhlas.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: falaq
         repeat: 3

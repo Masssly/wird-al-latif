@@ -41,11 +41,11 @@ sections:
       - id: ushhiduka        # stable id used by every other file
         repeat: 4            # omit when the line is said once
         arabic: …            # text field (duʿās)
-        audio:               # optional, for later (see below)
-          file: audio/…
+        audio:               # optional; a website-only feature, the PDF ignores it
+          file: audio/ushhiduka.mp3   # path under public/, so the site serves it directly
           reciter: …
           licence: …
-          start: 12.5        # seconds, optional
+          start: 12.5        # seconds, optional: clip from a longer recording
           end: 31.0
 ```
 
