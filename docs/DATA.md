@@ -59,11 +59,14 @@ no sura number. The item id always appears, so the file traces back to its
 `data/wird.yaml` entry on sight; the sura number is only there so the file is
 recognisable on its own, outside the repo (a Files app, a download).
 
-**To replace a recording yourself:** export the new one as an MP3 (mono is
-fine; 96–128kbps is plenty for speech), overwrite the file at that same path,
-and update `reciter` in `data/wird.yaml` if the reciter changed. Nothing else
-needs to change — the filename *is* the id. Then run
-`bun scripts/build-wird-data.ts` to refresh `src/data/wird.json`.
+**To replace a recording yourself — no `bun`, no terminal:** export the new
+one as an MP3 (mono is fine; 96–128kbps is plenty for speech), then on
+github.com open the file at that same path and use "Replace file" (or delete
+it and upload the new one under the same name). If the reciter changed,
+also edit `reciter` in `data/wird.yaml` the same way. Nothing else needs to
+change — the filename *is* the id, and `src/data/wird.json` (the website's
+copy of this data) is regenerated automatically on every push; it's never
+something to update by hand.
 
 Qurʾānic items have `quran` instead of `arabic`. The Arabic comes from
 KFGQPC at build time:
