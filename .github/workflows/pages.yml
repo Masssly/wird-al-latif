@@ -49,6 +49,13 @@ jobs:
       - name: Website dependencies
         run: bun install --frozen-lockfile
 
+      - name: Refresh the generated website data
+        # src/data/wird.json is committed for local dev convenience, but CI never
+        # trusts that copy: it's regenerated here from data/, i18n/ and public/audio/
+        # every run, so editing those directly (even just in GitHub's web UI, no bun
+        # required) is enough to update the live site.
+        run: bun scripts/build-wird-data.ts
+
       - name: Website tests and type check
         run: |
           bunx vitest run

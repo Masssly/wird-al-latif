@@ -1,4 +1,5 @@
-import { Check, RotateCcw } from "lucide-react";
+import { Check, Pause, Play, RotateCcw } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { getLang, WIRD, type Item, type Lang, type When } from "@/lib/wird";
 import { Rich } from "./Rich";
 
@@ -13,6 +14,9 @@ type Props = {
   showTranslit: boolean;
   /** Languages to show the meaning in, in order. A language missing the meaning is simply skipped. */
   meaningLangs: string[];
+  /** Id of the one item whose recitation may be playing right now, page-wide. */
+  playingAudioId: string | null;
+  setPlayingAudioId: (id: string | null) => void;
 };
 
 export function ItemCard({
@@ -25,11 +29,14 @@ export function ItemCard({
   onTap,
   showTranslit,
   meaningLangs,
+  playingAudioId,
+  setPlayingAudioId,
 }: Props) {
   const done = count >= item.repeat;
   const heading = lang.headings[item.id] ?? en.headings[item.id];
   const tl = WIRD.translit;
   const itemTl = tl.items[item.id];
+  const audio = useAudioToggle(item.id, playingAudioId, setPlayingAudioId);
 
   return (
     <article id={item.id} className="scroll-mt-20 border-b border-border py-6">
@@ -49,10 +56,16 @@ export function ItemCard({
             )}
           </span>
         )}
+        {item.audio && <AudioChip playing={audio.playing} onToggle={audio.toggle} />}
       </div>
 
       {item.kind === "quran" ? (
-        <QuranBody item={item} showTranslit={showTranslit} meaningLangs={meaningLangs} />
+        <QuranBody
+          item={item}
+          showTranslit={showTranslit}
+          meaningLangs={meaningLangs}
+          audio={audio}
+        />
       ) : (
         <>
           <p lang="ar" dir="rtl" className="text-ar font-dua text-ink">
@@ -62,6 +75,7 @@ export function ItemCard({
               mode={item.kind === "quote" ? "uthmani" : "arabic"}
             />
           </p>
+          {item.audio && <AudioBar audio={item.audio} {...audio} />}
           {showTranslit && itemTl && (
             <p lang="ar-Latn" className="text-lat mt-2 italic text-foreground/85">
               <Rich text={itemTl} when={when} mode="translit" />
@@ -142,17 +156,97 @@ function LangPill({ children }: { children: string }) {
   );
 }
 
-/** Minimal player for an item's recitation. A test feature: one item only, for now. */
-function AudioPlayer({ audio }: { audio: NonNullable<Item["audio"]> }) {
-  const BASE = import.meta.env.BASE_URL;
+/** Drives one item's recitation: at most one plays at a time, page-wide (playingAudioId is
+ * shared by every ItemCard). Collapsed to a small chip until played; the full bar — what's
+ * actually playing, and where — only takes up space while it's playing. */
+function useAudioToggle(
+  id: string,
+  playingAudioId: string | null,
+  setPlayingAudioId: (id: string | null) => void,
+) {
+  const ref = useRef<HTMLAudioElement>(null);
+  const [current, setCurrent] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const playing = playingAudioId === id;
+
+  // Some other item started: stop this one, even if it's mid-playback.
+  useEffect(() => {
+    if (!playing) ref.current?.pause();
+  }, [playing]);
+
+  const toggle = () => {
+    if (playing) {
+      setPlayingAudioId(null);
+    } else {
+      setCurrent(0);
+      setPlayingAudioId(id);
+      // A quick pause right after can abort this promise (e.g. tapping again before it starts) —
+      // expected, not an error; HTMLMediaElement just doesn't let play() itself opt out of the
+      // console warning, so catch it here instead.
+      ref.current?.play().catch(() => {});
+    }
+  };
+  const onEnded = () => setPlayingAudioId(null);
+
+  return {
+    ref,
+    playing,
+    toggle,
+    current,
+    duration,
+    onEnded,
+    onTimeUpdate: () => setCurrent(ref.current?.currentTime ?? 0),
+    onLoadedMetadata: () => setDuration(ref.current?.duration ?? 0),
+  };
+}
+
+type AudioToggle = ReturnType<typeof useAudioToggle>;
+
+/** The play/pause button, always present once an item has audio — in the header, out of the
+ * way of the text. The rest of the player only shows up while actually playing. */
+function AudioChip({ playing, onToggle }: { playing: boolean; onToggle: () => void }) {
   return (
-    <div className="mt-2">
-      <audio controls preload="none" className="h-9 w-full" src={`${BASE}${audio.file}`}>
-        Your browser can't play this audio; here's the file anyway:{" "}
-        <a href={`${BASE}${audio.file}`}>{audio.file}</a>.
-      </audio>
-      <p className="mt-1 text-xs text-muted-foreground">Recited by {audio.reciter}</p>
-    </div>
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-label={playing ? "Pause the recitation" : "Play the recitation"}
+      aria-pressed={playing}
+      className="ml-auto flex size-7 shrink-0 items-center justify-center rounded-full border border-border text-gold print:hidden"
+    >
+      {playing ? <Pause className="size-3.5" /> : <Play className="size-3.5 translate-x-0.5" />}
+    </button>
+  );
+}
+
+const fmt = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+
+/** The expanded row: scrub track and time. Mounted only while playing, so it folds away — not
+ * just visually hidden — the moment playback stops. */
+function AudioBar({ audio, ...t }: { audio: NonNullable<Item["audio"]> } & AudioToggle) {
+  const BASE = import.meta.env.BASE_URL;
+  const pct = t.duration ? (t.current / t.duration) * 100 : 0;
+  return (
+    <>
+      <audio
+        ref={t.ref}
+        preload="none"
+        src={`${BASE}${audio.file}`}
+        onEnded={t.onEnded}
+        onTimeUpdate={t.onTimeUpdate}
+        onLoadedMetadata={t.onLoadedMetadata}
+        className="hidden"
+      />
+      {t.playing && (
+        <div className="mt-2 flex h-7 items-center gap-2 print:hidden">
+          <div className="h-[3px] flex-1 rounded-full bg-border">
+            <div className="h-full rounded-full bg-primary" style={{ width: `${pct}%` }} />
+          </div>
+          <span className="text-[11px] tabular-nums text-muted-foreground">
+            {fmt(t.current)} / {fmt(t.duration)}
+          </span>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -160,10 +254,12 @@ function QuranBody({
   item,
   showTranslit,
   meaningLangs,
+  audio,
 }: {
   item: Item;
   showTranslit: boolean;
   meaningLangs: string[];
+  audio: AudioToggle;
 }) {
   const tl = WIRD.translit;
   return (
@@ -180,7 +276,7 @@ function QuranBody({
           </span>
         ))}
       </p>
-      {item.audio && <AudioPlayer audio={item.audio} />}
+      {item.audio && <AudioBar audio={item.audio} {...audio} />}
       {showTranslit && (
         <p lang="ar-Latn" className="text-lat mt-2 italic text-foreground/85">
           {item.basmala && (
