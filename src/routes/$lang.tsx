@@ -42,6 +42,9 @@ function Reader() {
   const [settings, update] = useSettings();
   const { counts, tap, reset } = useProgress(when);
   const [open, setOpen] = useState(false);
+  // Which item's recitation is playing, page-wide: starting one pauses any other, so
+  // listening to several items at once never happens.
+  const [playingAudioId, setPlayingAudioId] = useState<string | null>(null);
 
   // The language being read, plus any others the reader chose to mix in. Never filled in
   // automatically: a language with no meaning for an item just shows nothing for it.
@@ -155,6 +158,8 @@ function Reader() {
                   onTap={() => tap(it.id, it.repeat)}
                   showTranslit={settings.translit}
                   meaningLangs={meaningLangs}
+                  playingAudioId={playingAudioId}
+                  setPlayingAudioId={setPlayingAudioId}
                 />
               ))}
             </section>
