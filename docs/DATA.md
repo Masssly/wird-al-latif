@@ -51,6 +51,20 @@ sections:
 
 Item numbers (1–46) are not stored; they follow from the order.
 
+### Audio
+
+**Filename:** `public/audio/<sura>-<item id>.mp3` for a Qurʾānic item (e.g.
+`112-ikhlas.mp3`), or just `public/audio/<item id>.mp3` for a duʿā, which has
+no sura number. The item id always appears, so the file traces back to its
+`data/wird.yaml` entry on sight; the sura number is only there so the file is
+recognisable on its own, outside the repo (a Files app, a download).
+
+**To replace a recording yourself:** export the new one as an MP3 (mono is
+fine; 96–128kbps is plenty for speech), overwrite the file at that same path,
+and update `reciter` in `data/wird.yaml` if the reciter changed. Nothing else
+needs to change — the filename *is* the id. Then run
+`bun scripts/build-wird-data.ts` to refresh `src/data/wird.json`.
+
 Qurʾānic items have `quran` instead of `arabic`. The Arabic comes from
 KFGQPC at build time:
 
