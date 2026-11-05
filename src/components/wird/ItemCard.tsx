@@ -56,7 +56,7 @@ export function ItemCard({
             )}
           </span>
         )}
-        {item.audio && <AudioChip playing={audio.playing} onToggle={audio.toggle} />}
+        {item.audio && !audio.playing && <AudioChip onToggle={audio.toggle} />}
       </div>
 
       {item.kind === "quran" ? (
@@ -157,16 +157,14 @@ function LangPill({ children }: { children: string }) {
 }
 
 /** Drives one item's recitation: at most one plays at a time, page-wide (playingAudioId is
- * shared by every ItemCard). Collapsed to a small chip until played; the full bar — what's
- * actually playing, and where — only takes up space while it's playing. */
+ * shared by every ItemCard). Collapsed to a small chip until played; the real browser
+ * controls — play/pause, scrubbing, volume, speed — only take up space while playing. */
 function useAudioToggle(
   id: string,
   playingAudioId: string | null,
   setPlayingAudioId: (id: string | null) => void,
 ) {
   const ref = useRef<HTMLAudioElement>(null);
-  const [current, setCurrent] = useState(0);
-  const [duration, setDuration] = useState(0);
   const playing = playingAudioId === id;
 
   // Some other item started: stop this one, even if it's mid-playback.
@@ -175,78 +173,54 @@ function useAudioToggle(
   }, [playing]);
 
   const toggle = () => {
-    if (playing) {
-      setPlayingAudioId(null);
-    } else {
-      setCurrent(0);
-      setPlayingAudioId(id);
-      // A quick pause right after can abort this promise (e.g. tapping again before it starts) —
-      // expected, not an error; HTMLMediaElement just doesn't let play() itself opt out of the
-      // console warning, so catch it here instead.
-      ref.current?.play().catch(() => {});
-    }
+    setPlayingAudioId(id);
+    // A quick pause right after can abort this promise (e.g. tapping again before it starts) —
+    // expected, not an error; HTMLMediaElement just doesn't let play() itself opt out of the
+    // console warning, so catch it here instead.
+    ref.current?.play().catch(() => {});
   };
-  const onEnded = () => setPlayingAudioId(null);
+  // Fires both for a real pause (the reciter's own controls) and for the one we trigger above
+  // when another item starts — only the former should still be "us" by the time it fires.
+  const onPauseOrEnded = () => {
+    if (playing) setPlayingAudioId(null);
+  };
 
-  return {
-    ref,
-    playing,
-    toggle,
-    current,
-    duration,
-    onEnded,
-    onTimeUpdate: () => setCurrent(ref.current?.currentTime ?? 0),
-    onLoadedMetadata: () => setDuration(ref.current?.duration ?? 0),
-  };
+  return { ref, playing, toggle, onPauseOrEnded };
 }
 
 type AudioToggle = ReturnType<typeof useAudioToggle>;
 
-/** The play/pause button, always present once an item has audio — in the header, out of the
- * way of the text. The rest of the player only shows up while actually playing. */
-function AudioChip({ playing, onToggle }: { playing: boolean; onToggle: () => void }) {
+/** Collapsed state: a small play button, out of the way of the text. Once playing, the real
+ * controls (below, in AudioBar) take over — pause lives there, not here, so there's one
+ * control for it, not two. */
+function AudioChip({ onToggle }: { onToggle: () => void }) {
   return (
     <button
       type="button"
       onClick={onToggle}
-      aria-label={playing ? "Pause the recitation" : "Play the recitation"}
-      aria-pressed={playing}
+      aria-label="Play the recitation"
       className="ml-auto flex size-7 shrink-0 items-center justify-center rounded-full border border-border text-gold print:hidden"
     >
-      {playing ? <Pause className="size-3.5" /> : <Play className="size-3.5 translate-x-0.5" />}
+      <Play className="size-3.5 translate-x-0.5" />
     </button>
   );
 }
 
-const fmt = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
-
-/** The expanded row: scrub track and time. Mounted only while playing, so it folds away — not
- * just visually hidden — the moment playback stops. */
+/** The full browser audio player — play/pause, scrubbing, volume, speed where the browser
+ * offers it. Mounted (and visible) only while playing, so it folds away the moment playback
+ * stops, rather than sitting there taking up space between listens. */
 function AudioBar({ audio, ...t }: { audio: NonNullable<Item["audio"]> } & AudioToggle) {
   const BASE = import.meta.env.BASE_URL;
-  const pct = t.duration ? (t.current / t.duration) * 100 : 0;
   return (
-    <>
-      <audio
-        ref={t.ref}
-        preload="none"
-        src={`${BASE}${audio.file}`}
-        onEnded={t.onEnded}
-        onTimeUpdate={t.onTimeUpdate}
-        onLoadedMetadata={t.onLoadedMetadata}
-        className="hidden"
-      />
-      {t.playing && (
-        <div className="mt-2 flex h-7 items-center gap-2 print:hidden">
-          <div className="h-[3px] flex-1 rounded-full bg-border">
-            <div className="h-full rounded-full bg-primary" style={{ width: `${pct}%` }} />
-          </div>
-          <span className="text-[11px] tabular-nums text-muted-foreground">
-            {fmt(t.current)} / {fmt(t.duration)}
-          </span>
-        </div>
-      )}
-    </>
+    <audio
+      ref={t.ref}
+      preload="none"
+      controls={t.playing}
+      src={`${BASE}${audio.file}`}
+      onEnded={t.onPauseOrEnded}
+      onPause={t.onPauseOrEnded}
+      className={t.playing ? "mt-2 h-9 w-full print:hidden" : "hidden"}
+    />
   );
 }
 
