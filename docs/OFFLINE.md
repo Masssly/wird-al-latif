@@ -1,18 +1,21 @@
 # Making a web app work offline
 
 What this site does: once you've opened it with a connection, it keeps working without one —
-reload, navigate between pages, and the previously-loaded ones still render. This is standard
-PWA (Progressive Web App) technique, nothing exotic, but it only shows up in guides scattered
-across MDN/web.dev. Here's exactly what's wired up, concretely, so it can be copied into
-another project rather than re-derived from scratch.
+reload, navigate between pages, and the previously-loaded ones still render, data included, since
+the whole thing is baked into the build. This is standard PWA (Progressive Web App) technique for
+§§1–3, nothing exotic, but it only shows up in guides scattered across MDN/web.dev; §4 is the part
+that actually makes an app's *content* usable offline, not just its shell. Here's exactly what's
+wired up, concretely, so it can be copied into another project rather than re-derived from scratch.
 
-Three independent pieces, each worth doing on its own:
+Four independent pieces, each worth doing on its own:
 
-1. **A service worker** (`public/sw.js`) — the actual offline cache.
+1. **A service worker** (`public/sw.js`) — caches the app shell (HTML/JS/CSS/fonts).
 2. **A web app manifest** (`public/site.webmanifest`) + icons — proper home-screen install,
    not strictly "offline" but the two always travel together in practice.
 3. **Registering the worker** from the app shell, carefully (dev mode and editor previews need
    to skip it, or you'll be debugging stale caches instead of your code).
+4. **Syncing the actual data**, for an app whose data is too big to just bake into the build —
+   the piece that matters most, and the one §§1–3 don't cover at all.
 
 ## 1. The service worker
 
@@ -165,6 +168,44 @@ remember to unregister it by hand in devtools. Skipping registration in dev avoi
 that, and actively unregistering any leftover one (from before this check existed, or a stray
 preview tab) cleans up the one case it could already have happened.
 
+## 4. For real offline *use*, not just offline *loading*: sync the dataset
+
+Everything above makes the app shell load without a connection. For an app that's really a
+browsable or searchable body of data — a dictionary, a reference list, a catalogue — that's
+the easy, less valuable half. The part that actually matters is getting the *data* onto the
+device, once, so the real feature (search, browse, look things up) keeps working with no
+connection at all. This project's own `src/data/wird.json` already works exactly this way: it's
+baked into the JS bundle at build time, so there's no sync step needed — but most apps' data is
+too large or changes too often for that, and need an explicit sync step instead.
+
+The pattern (seen working, at the sibling Dagbanli dictionary project in this account — a
+different technique from its service worker, which only covers its own shell):
+
+1. **Publish the dataset as one fetchable file.** A JSON array, built and uploaded wherever the
+   app's static assets already live (object storage, a CDN, a build artifact) — not a page-by-page
+   API. One request gets the whole thing.
+2. **Publish a small manifest alongside it**: `{ version, updatedAt, count }` or similar. Fetching
+   this is cheap; fetching the full dataset is not, so check the manifest before deciding whether
+   a re-sync is even worth it.
+3. **On first load (or when the manifest's version has changed), download the dataset and bulk-write
+   it into IndexedDB** (via a thin wrapper like Dexie, or raw `IndexedDB` — either works, Dexie is
+   just less code). Chunk the insert (e.g. 500 rows at a time) so the UI thread doesn't stall on a
+   large dataset, and report progress if the download is big enough that a user would otherwise
+   wonder if it's frozen.
+4. **Record the synced version** (`localStorage` is fine for one string) so step 2's check actually
+   skips the re-download next time nothing's changed — the whole point, on a slow or metered
+   connection, is paying that download cost once.
+5. **Read from IndexedDB, not the network, for the actual feature.** Search, lookup, filtering —
+   all of it runs against the local copy once synced. The network is only ever involved in getting
+   a fresher copy, never in answering a query.
+
+This is a genuinely different, bigger decision than the service worker: it means committing to
+"the whole dataset lives on the device," which only makes sense when the data is read-heavy,
+changes slowly, and is reasonably sized (megabytes, not gigabytes) — a live, frequently-written,
+per-user, or genuinely huge dataset doesn't fit this pattern and shouldn't be forced into it.
+Where it does fit, it's what turns "the page loads offline" into "the actual feature works
+offline," which is usually the part worth having.
+
 ## Checklist for another app
 
 1. Is it (or can its frontend be) a fully static build, or does it call a live API/backend?
@@ -179,3 +220,7 @@ preview tab) cleans up the one case it could already have happened.
    manifest sizes (192/512 × any/maskable) from — same approach as this project's own icon.
 4. Test it for real: load the deployed app once, then DevTools → Network → Offline, reload.
    That's the actual bar, not "the code looks right."
+5. Does the app have a body of data worth browsing offline, not just a shell worth loading
+   offline? If the data's small enough to bake into the build (this project's own approach),
+   do that — simplest option, no sync code at all. If it's bigger or changes on its own
+   schedule, that's §4 above: sync it into IndexedDB once, version it, and read from there.
