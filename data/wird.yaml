@@ -31,12 +31,20 @@ sections:
         quran:
           verses: "113:1-5"
           basmala: true
+        audio:
+          file: audio/113-falaq.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: nas
         repeat: 3
         quran:
           verses: "114:1-6"
           basmala: true
+        audio:
+          file: audio/114-nas.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: muminun-97
         repeat: 3
@@ -44,26 +52,50 @@ sections:
           verses: "23:97-98"
           # The wird starts at رَبِّ, so the KFGQPC wording is adjusted at build time (REVIEW.md R-Q1).
           opening: {replace: "وَقُل رَّبِّ", with: "رَبِّ"}
+        audio:
+          file: audio/23-muminun-97.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: muminun-115
         quran:
           verses: "23:115-118"
+        audio:
+          file: audio/23-muminun-115.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: rum-17
         quran:
           verses: "30:17-19"
+        audio:
+          file: audio/30-rum-17.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: taawwudh
         repeat: 3
         arabic: "أَعُوذُ بِاللَّهِ السَّمِيعِ الْعَلِيمِ مِنَ الشَّيْطَانِ الرَّجِيمِ"
+        audio:
+          file: audio/taawwudh.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: hashr-21
         quran:
           verses: "59:21-24"
+        audio:
+          file: audio/59-hashr-21.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: saffat-79
         quran:
           verses: "37:79-81"
+        audio:
+          file: audio/37-saffat-79.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
   - id: protection
     items:
@@ -71,10 +103,18 @@ sections:
       - id: kalimat-tammat
         repeat: 3
         arabic: "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ"
+        audio:
+          file: audio/kalimat-tammat.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: bismillah-la-yadurr
         repeat: 3
         arabic: "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ"
+        audio:
+          file: audio/bismillah-la-yadurr.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
   - id: witness
     items:
@@ -85,6 +125,10 @@ sections:
           - "اللَّهُمَّ إِنِّي "
           - {morning: "أَصْبَحْتُ", evening: "أَمْسَيْتُ"}
           - " مِنْكَ فِي نِعْمَةٍ وَعَافِيَةٍ وَسِتْرٍ، فَأَتْمِمْ نِعْمَتَكَ عَلَيَّ وَعَافِيَتَكَ وَسِتْرَكَ فِي الدُّنْيَا وَالْآخِرَةِ"
+        audio:
+          file: audio/nima-afiya-sitr.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: ushhiduka
         repeat: 4
@@ -92,18 +136,34 @@ sections:
           - "اللَّهُمَّ إِنِّي "
           - {morning: "أَصْبَحْتُ", evening: "أَمْسَيْتُ"}
           - " أُشْهِدُكَ، وَأُشْهِدُ حَمَلَةَ عَرْشِكَ وَمَلَائِكَتَكَ وَجَمِيعَ خَلْقِكَ، أَنَّكَ أَنْتَ اللَّهُ لَا إِلَٰهَ إِلَّا أَنْتَ وَحْدَكَ لَا شَرِيكَ لَكَ، وَأَنَّ سَيِّدَنَا مُحَمَّدًا عَبْدُكَ وَرَسُولُكَ"
+        audio:
+          file: audio/ushhiduka.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: hamdan-yuwafi
         repeat: 3
         arabic: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ، حَمْدًا يُوَافِي نِعَمَهُ وَيُكَافِئُ مَزِيدَهُ"
+        audio:
+          file: audio/hamdan-yuwafi.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: amantu
         repeat: 3
         arabic: "آمَنْتُ بِاللَّهِ الْعَظِيمِ، وَكَفَرْتُ بِالْجِبْتِ وَالطَّاغُوتِ، وَاسْتَمْسَكْتُ بِالْعُرْوَةِ الْوُثْقَىٰ لَا انْفِصَامَ لَهَا وَاللَّهُ سَمِيعٌ عَلِيمٌ"
+        audio:
+          file: audio/amantu.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: raditu
         repeat: 3
         arabic: "رَضِيتُ بِاللَّهِ رَبًّا، وَبِالْإِسْلَامِ دِينًا، وَبِسَيِّدِنَا مُحَمَّدٍ صَلَّى اللَّهُ عَلَيْهِ وَآلِهِ وَسَلَّمَ نَبِيًّا وَرَسُولًا"
+        audio:
+          file: audio/raditu.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: hasbiya
         repeat: 7
@@ -111,43 +171,91 @@ sections:
           verses: "9:129"
           from_word: "حَسۡبِيَ"
           quote: true   # read like a duʿā: own transliteration and meaning, no verse translations
+        audio:
+          file: audio/hasbiya.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: salat-wa-sahbihi
         repeat: 10
         arabic: "اللَّهُمَّ صَلِّ عَلَىٰ سَيِّدِنَا مُحَمَّدٍ وَآلِهِ وَصَحْبِهِ وَسَلِّمْ"
+        audio:
+          file: audio/salat-wa-sahbihi.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
   - id: asking
     items:
 
       - id: fujaat
         arabic: "اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فُجَاءَةِ الْخَيْرِ، وَأَعُوذُ بِكَ مِنْ فُجَاءَةِ الشَّرِّ"
+        audio:
+          file: audio/fujaat.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: sayyid-al-istighfar
         arabic: "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَٰهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَىٰ عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ وَأَبُوءُ بِذَنْبِي، فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ"
+        audio:
+          file: audio/sayyid-al-istighfar.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: alayka-tawakkaltu
         arabic: "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَٰهَ إِلَّا أَنْتَ، عَلَيْكَ تَوَكَّلْتُ وَأَنْتَ رَبُّ الْعَرْشِ الْعَظِيمِ"
+        audio:
+          file: audio/alayka-tawakkaltu.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: ma-shaa-allah
         arabic: "مَا شَاءَ اللَّهُ كَانَ، وَمَا لَمْ يَشَأْ لَمْ يَكُنْ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ الْعَلِيِّ الْعَظِيمِ"
+        audio:
+          file: audio/ma-shaa-allah.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: alamu
         arabic: "أَعْلَمُ أَنَّ اللَّهَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ، وَأَنَّ اللَّهَ قَدْ أَحَاطَ بِكُلِّ شَيْءٍ عِلْمًا"
+        audio:
+          file: audio/alamu.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: sharri-nafsi
         arabic: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي، وَمِنْ شَرِّ كُلِّ دَابَّةٍ أَنْتَ آخِذٌ بِنَاصِيَتِهَا، إِنَّ رَبِّي عَلَىٰ صِرَاطٍ مُسْتَقِيمٍ"
+        audio:
+          file: audio/sharri-nafsi.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: ya-hayyu
         arabic: "يَا حَيُّ يَا قَيُّومُ، بِرَحْمَتِكَ أَسْتَغِيثُ، وَمِنْ عَذَابِكَ أَسْتَجِيرُ، أَصْلِحْ لِي شَأْنِي كُلَّهُ، وَلَا تَكِلْنِي إِلَىٰ نَفْسِي وَلَا إِلَىٰ أَحَدٍ مِنْ خَلْقِكَ طَرْفَةَ عَيْنٍ"
+        audio:
+          file: audio/ya-hayyu.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: hamm-hazan
         arabic: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَأَعُوذُ بِكَ مِنَ الْعَجْزِ وَالْكَسَلِ، وَأَعُوذُ بِكَ مِنَ الْجُبْنِ وَالْبُخْلِ، وَأَعُوذُ بِكَ مِنْ غَلَبَةِ الدَّيْنِ وَقَهْرِ الرِّجَالِ"
+        audio:
+          file: audio/hamm-hazan.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: afiya
         arabic: "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ"
+        audio:
+          file: audio/afiya.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: afw-afiya
         arabic: "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ وَالْمُعَافَاةَ الدَّائِمَةَ فِي دِينِي وَدُنْيَايَ وَأَهْلِي وَمَالِي"
+        audio:
+          file: audio/afw-afiya.mp3
+          reciter: "Mohammed Sadat Abdulai"
+          licence: "CC BY-SA 4.0"
 
       - id: ustur
         arabic: "اللَّهُمَّ اسْتُرْ عَوْرَاتِي وَآمِنْ رَوْعَاتِي"
