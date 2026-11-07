@@ -46,6 +46,7 @@ export function buildWirdData() {
     items: sec.items.map((it: any) => {
       const base: any = { id: it.id, repeat: it.repeat ?? 1 };
       if (it.audio) base.audio = it.audio;
+      if (it.audioByWhen) base.audioByWhen = it.audioByWhen;
       const q = it.quran;
       if (!q) return { ...base, kind: "dua", arabic: it.arabic };
       const { s, a, keys } = parseVerses(q.verses);

@@ -108,7 +108,7 @@ def validate(data):
             iid = it.get("id")
             where = f"data/wird.yaml item {iid}"
             ids.append(iid)
-            unknown = set(it) - {"id", "repeat", "quran", "arabic", "audio"}
+            unknown = set(it) - {"id", "repeat", "quran", "arabic", "audio", "audioByWhen"}
             if unknown:
                 raise DataError(f"{where}: unknown keys {sorted(unknown)}")
             if "repeat" in it and not (isinstance(it["repeat"], int) and it["repeat"] > 1):
@@ -123,11 +123,16 @@ def validate(data):
                 raise DataError(f"{where}: needs exactly one of arabic or quran")
             if "arabic" in it:
                 _check_text(where, it["arabic"])
-            if "audio" in it:
-                a = it["audio"]
-                if not (isinstance(a, dict) and {"file", "reciter", "licence"} <= set(a)
-                        and set(a) <= {"file", "reciter", "licence", "start", "end"}):
-                    raise DataError(f"{where}: audio needs file, reciter, licence (+ optional start, end)")
+            def _check_audio(a):
+                return (isinstance(a, dict) and {"file", "reciter", "licence"} <= set(a)
+                        and set(a) <= {"file", "reciter", "licence", "start", "end"})
+            if "audio" in it and not _check_audio(it["audio"]):
+                raise DataError(f"{where}: audio needs file, reciter, licence (+ optional start, end)")
+            if "audioByWhen" in it:
+                aw = it["audioByWhen"]
+                if not (isinstance(aw, dict) and aw and set(aw) <= {"morning", "evening"}
+                        and all(_check_audio(v) for v in aw.values())):
+                    raise DataError(f"{where}: audioByWhen needs morning/evening audio blocks")
     if len(ids) != len(set(ids)) or len(sec_ids) != len(set(sec_ids)):
         raise DataError("duplicate item or section ids")
     known = set(ids)
