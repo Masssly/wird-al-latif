@@ -22,6 +22,7 @@ export type Item = {
   basmala?: boolean;
   verses?: Verse[];
   audio?: Audio;
+  audioByWhen?: { morning?: Audio; evening?: Audio };
 };
 export type Section = { id: string; items: Item[] };
 export type LangMeta = {

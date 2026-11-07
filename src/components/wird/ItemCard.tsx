@@ -37,6 +37,7 @@ export function ItemCard({
   const tl = WIRD.translit;
   const itemTl = tl.items[item.id];
   const audio = useAudioToggle(item.id, playingAudioId, setPlayingAudioId);
+  const resolvedAudio = item.audioByWhen?.[when] ?? item.audio;
 
   return (
     <article id={item.id} className="scroll-mt-20 border-b border-border py-6">
@@ -56,7 +57,7 @@ export function ItemCard({
             )}
           </span>
         )}
-        {item.audio && !audio.playing && <AudioChip onToggle={audio.toggle} />}
+        {resolvedAudio && !audio.playing && <AudioChip onToggle={audio.toggle} />}
       </div>
 
       {item.kind === "quran" ? (
@@ -75,7 +76,7 @@ export function ItemCard({
               mode={item.kind === "quote" ? "uthmani" : "arabic"}
             />
           </p>
-          {item.audio && <AudioBar audio={item.audio} {...audio} />}
+          {resolvedAudio && <AudioBar audio={resolvedAudio} {...audio} />}
           {showTranslit && itemTl && (
             <p lang="ar-Latn" className="text-lat mt-2 italic text-foreground/85">
               <Rich text={itemTl} when={when} mode="translit" />
